@@ -1,18 +1,12 @@
 #!/bin/bash
 FULL_PATH_TO_SCRIPT="$(realpath "$0")"
 SCRIPT_DIRECTORY="$(dirname "$FULL_PATH_TO_SCRIPT")"
-# IP of HamLib rigctld server
-IP="192.168.1.2"
-# TCP PORT of Hamlib rigctld for a particular rig
-# Suggestion to use the model number of rig for the port
-# For IC-7100 use 7100
-PORT="7100"
-# TimeOut in seconds (remember to catch rig not being online)
-TIMEOUT=1
-# String match to rig offline/powered off
-# if you move the TIMEOUT to 5 RIGOFF will need to be set
-# With a timeout of 1 then no reponse will consider the rig to be off
-RIGOFF=""
+if [ ! -f "$SCRIPT_DIRECTORY/.ENV" ]; then
+    echo "$SCRIPT_DIRECTORY/.ENV does not exist."
+    echo "ENV.example is template to use"
+    exit 1
+fi
+source $SCRIPT_DIRECTORY/.ENV
 # Internal Variables, use to only update delta'
 # Zero them out for starters
 XFREQ=""
