@@ -24,26 +24,25 @@ shopt -s extglob
 # Method for getting rigs current listening frequency and mode
 get_freq () {
 # use netcat to speak to rigctld and grab the Frequency
-FREQ=`echo f| netcat -w $TIMEOUT $IP $PORT`
-# If the Frequency was not grabbed move on
-# If it was then lets convert to Mhz with bc
-if [[ $FREQ != "" ]]
-then
-FREQ=`echo "scale=6; $FREQ/1000000" |bc -l`
-fi
-# In another command get the Mode
-### This could be optimised to a single call
-### using cat "fm"
-MODE=`echo m| netcat -w $TIMEOUT $IP $PORT`
+FREQMODE=`echo fm| netcat -w $TIMEOUT $IP $PORT`
 # Sneaky move to remove the CR/LF from the netcat output
-MODE=`echo $MODE`
+FREQMODE=`echo $FREQMODE`
 # Remove the Bandwidth/Filter as not really needed in most cases
-MODE="${MODE% *}"
+# Bash String manipulation % LEFT # right
+FREQ="${FREQMODE%% *}"
+MODE="${FREQMODE#* }"
+MODE="${MODE%% *}"
 # On a IC-7100 if Mode = 0 then you are using DStar
 # Other radios may need some tweaks
 if [[ $MODE == "0" ]]
 then
 MODE="DStar"
+fi
+# If the Frequency was not grabbed move on
+# If it was then lets convert to Mhz with bc
+if [[ $FREQ != "" ]]
+then
+FREQ=`echo "scale=6; $FREQ/1000000" |bc -l`
 fi
 }
 
@@ -61,9 +60,12 @@ Label\":\"\"}" -p true -a true
 
 # loop forever
 # Just poll once a second so other tools like fldigi/others can also chat with the rigctld
+get_freq
 while true
 do
 get_freq
+echo "FREQ>${FREQ}<"
+echo "MODE>${MODE}<"
 if [[ "$FREQ" != "$XFREQ" || "$MODE" != "$XMODE" ]]
 then
         if [[ "$FREQ" == "$RIGOFF" || "$MODE" == "$RIGOFF" ]]
