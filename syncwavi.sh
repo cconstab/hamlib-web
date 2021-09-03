@@ -52,7 +52,7 @@ echo "FREQ>${FREQ}<"
 echo "MODE>${MODE}<"
 echo -n "Commit ID:"
 ./atcli -v update -k custom_qsy.wavi --value "{\"label\":\"QSY\",\"category\":\"SOCIAL\",\"type\":\"Text\",\"value\":\" I am at home listening on
-${FREQ}Mhz $MODE\",\"valueLabel\":\"\"}" -p true -a true
+ ${FREQ}Mhz $MODE\",\"valueLabel\":\"\"}" -p true -a true
 }
 
 # Update the @sign/wavi page with QRT message if the rig is off..
