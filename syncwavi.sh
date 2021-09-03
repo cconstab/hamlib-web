@@ -48,12 +48,17 @@ fi
 
 # Update the @sign/wavi page with the frequency being listened to if the rig is on..
 update_atsign () {
+echo "FREQ>${FREQ}<"
+echo "MODE>${MODE}<"
+echo -n "Commit ID:"
 ./atcli -v update -k custom_qsy.wavi --value "{\"label\":\"QSY\",\"category\":\"SOCIAL\",\"type\":\"Text\",\"value\":\" I am at home listening on
 ${FREQ}Mhz $MODE\",\"valueLabel\":\"\"}" -p true -a true
 }
 
 # Update the @sign/wavi page with QRT message if the rig is off..
 qrt_update_atsign () {
+echo "Rig Switched off"
+echo -n "Commit ID:"
 ./atcli -v update -k custom_qsy.wavi --value "{\"label\":\"QSY\",\"category\":\"SOCIAL\",\"type\":\"Text\",\"value\":\"I am QRT for now \",\"value
 Label\":\"\"}" -p true -a true
 }
@@ -64,8 +69,6 @@ get_freq
 while true
 do
 get_freq
-echo "FREQ>${FREQ}<"
-echo "MODE>${MODE}<"
 if [[ "$FREQ" != "$XFREQ" || "$MODE" != "$XMODE" ]]
 then
         if [[ "$FREQ" == "$RIGOFF" || "$MODE" == "$RIGOFF" ]]
