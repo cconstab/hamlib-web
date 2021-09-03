@@ -1,0 +1,17 @@
+# The @Protocol root server configurations.
+
+root_server:
+  # The port on which root server runs.
+  port: 64
+  host: 'root.atsign.org'
+
+# The @Protocol application log configurations
+log:
+  debug: false
+
+auth:
+  required: true
+  mode: pkam
+  # Where the key file is relative to atcli binary
+  key_file_location: 'key/@ai6bh_key.atKeys'
+  at_sign: '@ai6bh'
