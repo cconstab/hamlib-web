@@ -37,7 +37,7 @@ I am part of the founding team of the wavi.ng website and the opensoure project 
  
  On the RaspberryPi this was simply a matter of using the following commmad.
  ```
- sudo apt install  apt install libhamlib-utils
+ sudo apt install libhamlib-utils
  ```
 
  If you have an older radio you might have to connect via USB to serial connection or perhaps just a serial connector. Whatever the case you will be able to run `rigctl` to test the connection is working as it should.
