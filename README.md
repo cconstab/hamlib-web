@@ -100,7 +100,7 @@ Ok once installed we are ready to compile the `atcli` command
 cd hamlib-web
 ./build_atcli.sh
 ```
- Next move the key file you were asked to save as you activated your @sign to the key sub directory. This file contains your keys so be careful with them, but without them you cannot update the @sign data. I used Gdrive to get teh file from my phone to my PC then WinSCP to the RaspberryPi and was careful to tidy up afterwards. If you have lost the keys the @wavi app will allow you to export them from the safe storage on your phone.
+ Next move the key file you were asked to save as you activated your @sign to the key sub directory. This file contains your keys so be careful with them, but without them you cannot update the @sign data. I used Gdrive to get the file from my phone to my PC, then used WinSCP to the RaspberryPi and was careful to tidy up afterwards. If you have lost the keys, the @wavi app will allow you to export them from the safe storage on your phone.
 
  ```
  cp <location of keyFile> key/
