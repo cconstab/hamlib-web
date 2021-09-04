@@ -1,6 +1,6 @@
 # hamlib-web
  
- ## Project Aim
+ ## Projects Aim
 
  To provide near real-time frequency and modulation mode being used to a website, so other operators know where you are listening.
   No firewall ports should need to be opened, all data across Internet should be encrypted.
@@ -27,6 +27,8 @@ I am part of the founding team of the wavi.ng website and the opensoure project 
  The frequency/mode is updated via the @platform using a tool called `atcli` to a particular @sign. @signs are the identifier on the @platform, mine is @AI6BH as an example.
 
  The wavi.ng website asks for an @sign and then processes data held within the @sign. Data in this case the frequency and mode can be updated via `atcli`, but also an IoS/Android application called @wavi.
+ 
+ ![Untitled Diagram](https://user-images.githubusercontent.com/6131216/132076051-a04074b6-d3f9-4f43-b3f0-8366cf5363ed.jpg)
 
  ## Installation
 ### Hamlib installation and connection to rig
