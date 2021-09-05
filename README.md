@@ -121,7 +121,7 @@ Lets start with rigctld.
 ```
 while true; do rigctld -m 370 -r /dev/ttyUSB2 -t 7100 -s 19200 ; sleep 5; done
 ```
-I put this in a loop to catch any crashes of rigctld, it is very reliable but it will crash on occasion. Next you will see the -t and the port TCP port number. This port number and the IP address of the machine running `rigctl` needs to be communicated to the `syncwavi.sh` script via an `.ENV` file.
+I put this in a loop to catch any crashes of rigctld, it is very reliable but it will crash on occasion. Next you will see the -t and the port TCP port number. This port number and the IP address of the machine running `rigctld` needs to be communicated to the `syncwavi.sh` script via an `.ENV` file.
 
 ```
 cp ENV.example .ENV
