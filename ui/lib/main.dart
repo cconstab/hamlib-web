@@ -51,40 +51,33 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Builder(
           builder: (context) => Center(
-              child: ElevatedButton(
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                        uiTheme.viridianGreen)),
-                onPressed: () async {
-                  var preference = await futurePreference;
-                  setState(() {
-                    atClientPreference = preference;
-                  });
-                  Onboarding(
-                    context: context,
-                    atClientPreference: atClientPreference!,
-                    domain: AtEnv.rootDomain,
-                    rootEnvironment: AtEnv.rootEnvironment,
-                    appAPIKey: AtEnv.appApiKey,
-                    onboard: (value, atsign) {
-                      _logger.finer('Successfully onboarded $atsign');
-                    },
-                    onError: (error) {
-                      _logger.severe('Onboarding throws $error error');
-                    },
-                    nextScreen: const HomeScreen(),
-                  );
-                },
-                child: const Text('Let\'s go!'),
-              ),
-              
-              child: ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          uiTheme.viridianGreen)),
-                  onPressed: () {print('pressed');},
-                  child: const Text('Let\'s go!'),
-                  )),
+            child: ElevatedButton(
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(uiTheme.viridianGreen)),
+              onPressed: () async {
+                var preference = await futurePreference;
+                setState(() {
+                  atClientPreference = preference;
+                });
+                Onboarding(
+                  context: context,
+                  atClientPreference: atClientPreference!,
+                  domain: AtEnv.rootDomain,
+                  rootEnvironment: AtEnv.rootEnvironment,
+                  appAPIKey: AtEnv.appApiKey,
+                  onboard: (value, atsign) {
+                    _logger.finer('Successfully onboarded $atsign');
+                  },
+                  onError: (error) {
+                    _logger.severe('Onboarding throws $error error');
+                  },
+                  nextScreen: const HomeScreen(),
+                );
+              },
+              child: const Text('Let\'s go!'),
+            ),
+          ),
         ),
       ),
     );
