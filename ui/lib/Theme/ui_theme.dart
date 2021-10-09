@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
-class uiTheme {
+class UItheme {
   static const Color primaryColor = Color(0xFF3474E0);
   static const Color secondaryColor = Color(0xFFEE8B60);
   static const Color tertiaryColor = Color(0xFFFFFFFF);
@@ -62,5 +62,21 @@ class uiTheme {
         color: const Color(0xFF424242),
         fontWeight: FontWeight.normal,
         fontSize: 14,
+      );
+}
+
+extension TextStyleHelper on TextStyle {
+  TextStyle override(
+          {String? fontFamily,
+          Color? color,
+          double? fontSize,
+          FontWeight? fontWeight,
+          FontStyle? fontStyle}) =>
+      GoogleFonts.getFont(
+        fontFamily!,
+        color: color ?? this.color,
+        fontSize: fontSize ?? this.fontSize,
+        fontWeight: fontWeight ?? this.fontWeight,
+        fontStyle: fontStyle ?? this.fontStyle,
       );
 }
