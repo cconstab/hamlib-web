@@ -10,7 +10,7 @@ import 'package:ui/screens/main_screen.dart';
 import 'package:ui/widgets/error_dialog.dart';
 
 class OnboardingDialog extends StatefulWidget {
-  OnboardingDialog({Key? key}) : super(key: key);
+  OnboardingDialog({Key key}) : super(key: key);
 
   @override
   _OnboardingDialogState createState() => _OnboardingDialogState();
@@ -18,8 +18,8 @@ class OnboardingDialog extends StatefulWidget {
 
 class _OnboardingDialogState extends State<OnboardingDialog> {
   KeyChainManager _keyChainManager = KeyChainManager.getInstance();
-  List<String>? _atSignsList = [];
-  String? _atsign;
+  List<String> _atSignsList = [];
+  String _atsign;
 
   @override
   void initState() {
@@ -32,7 +32,7 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
     if (atSignsList?.isNotEmpty ?? false) {
       setState(() {
         _atSignsList = atSignsList;
-        _atsign = atSignsList![0];
+        _atsign = atSignsList[0];
       });
     } else {
       setState(() {
@@ -63,11 +63,11 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
               dropdownColor: UItheme.secondaryColor,
               value: _atsign,
               style: TextStyle(color: UItheme.viridianGreen, fontWeight: FontWeight.bold ),
-              items: _atSignsList!
+              items: _atSignsList
                   .map((atsign) =>
                       DropdownMenuItem(child: Text(atsign), value: atsign))
                   .toList(),
-              onChanged: (String? value) {
+              onChanged: (String value) {
                 if (value != null) {
                   setState(() {
                     _atsign = value;
@@ -89,7 +89,7 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
     return _onboard("", "Setup a new @sign");
   }
 
-  Widget _onboard(String? atSign, String text) {
+  Widget _onboard(String atSign, String text) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         primary: UItheme.rufous,
@@ -111,7 +111,7 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
                 !(_atSignsList?.contains(atsign) ?? false)) {
               setState(() {
                 if (_atSignsList == null) _atSignsList = [];
-                _atSignsList!.add(atsign);
+                _atSignsList.add(atsign);
                 _atsign = atsign;
               });
             }
@@ -177,11 +177,11 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
         child: SingleChildScrollView(
           child: ListView.builder(
             shrinkWrap: true,
-            itemCount: _atSignsList!.length,
+            itemCount: _atSignsList.length,
             itemBuilder: (BuildContext context, int index) {
               return Row(
                 children: [
-                  Text(_atSignsList![index]),
+                  Text(_atSignsList[index]),
                   Expanded(
                     child: Container(),
                   ),
@@ -190,7 +190,7 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
                       backgroundColor: MaterialStateProperty.all(Colors.red),
                     ),
                     child: Text("Reset", style: TextStyle(color: Colors.white)),
-                    onPressed: () => _resetAtSign(_atSignsList![index]),
+                    onPressed: () => _resetAtSign(_atSignsList[index]),
                   )
                 ],
               );
@@ -233,14 +233,14 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
                 _showResetDialog(context, true);
                 _keyChainManager.deleteAtSignFromKeychain(atsign);
                 setState(() {
-                  if (_atSignsList!.length == 1) {
+                  if (_atSignsList.length == 1) {
                     _atsign = null;
                   }
-                  if (_atSignsList!.length > 1 && _atsign == atsign) {
-                    _atsign = _atSignsList!
+                  if (_atSignsList.length > 1 && _atsign == atsign) {
+                    _atsign = _atSignsList
                         .firstWhere((element) => element != atsign);
                   }
-                  _atSignsList!.remove(atsign);
+                  _atSignsList.remove(atsign);
                 });
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
