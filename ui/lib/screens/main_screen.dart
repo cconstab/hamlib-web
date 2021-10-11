@@ -15,7 +15,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: UItheme.richBlackFOGRA29,
+      backgroundColor: UItheme.richBlackFOGRA29,
         appBar: PreferredSize(
             preferredSize:
                 Size.fromHeight(MediaQuery.of(context).size.height * 0.05),
@@ -23,26 +23,28 @@ class _MainScreenState extends State<MainScreen> {
                 backgroundColor: UItheme.viridianGreen,
                 automaticallyImplyLeading: true,
                 flexibleSpace: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(40, 40, 0, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(10, 10, 0, 0),
                   child: Text(
                     'HamLib-Web',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                        fontSize: 36,
+                        fontSize: 32,
                         textStyle: TextStyle(fontWeight: FontWeight.bold),
                         color: UItheme.mahogany),
+                        
                   ),
                 ))),
         floatingActionButton: FloatingActionButton(
           backgroundColor: UItheme.middleBlueGreen,
           elevation: 8,
           onPressed: () async {
-            await showModalBottomSheet(
+                       await showModalBottomSheet(
               isScrollControlled: true,
+              
               context: context,
               builder: (context) {
                 return Container(
-                  height: 500,
+                  height: 1000,
                   child: CreateRadioWidget(),
                 );
               },
