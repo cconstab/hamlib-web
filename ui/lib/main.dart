@@ -46,8 +46,8 @@ class _MyAppState extends State<MyApp> {
       ),
       // * The onboarding screen (first screen)
       routes: {
-        HomeScreen.id: (_) => HomeScreen(),
-        MainScreen.id: (_) => MainScreen()
+        HomeScreen.id: (_) => const HomeScreen(),
+        MainScreen.id: (_) => const MainScreen()
       },
       initialRoute: HomeScreen.id,
     );

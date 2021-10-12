@@ -41,6 +41,8 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
     }
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -106,8 +108,6 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
           rootEnvironment: AtEnv.rootEnvironment,
           appAPIKey: AtEnv.appApiKey,
           onboard: (value, atsign) {
-            //initializeContactsService(rootDomain: AtEnv.rootDomain);
-            //initializeChatService(AtClientManager.getInstance(), atsign!);
             if ((atsign != null) &&
                 !(_atSignsList?.contains(atsign) ?? false)) {
               setState(() {
@@ -148,7 +148,7 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
   Widget _resetButton() {
     return Column(
       children: [
-        SizedBox(height: 60),
+        const SizedBox(height: 100),
         ElevatedButton(
           onPressed: () {
             _showResetDialog(context, false);
