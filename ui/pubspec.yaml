@@ -30,6 +30,7 @@ dependencies:
   google_fonts: ^2.1.0
   auto_size_text:
   font_awesome_flutter:
+  mdi: ^3.0.0
 
   flutter:
     sdk: flutter
@@ -56,7 +57,10 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
+  fonts:
+  - family: LED
+    fonts:
+      - asset: fonts/LEDSimulator.ttf
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -92,3 +96,6 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+
+  

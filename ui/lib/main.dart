@@ -29,8 +29,8 @@ class MyApp extends StatefulWidget {
   const MyApp({Key key}) : super(key: key);
   @override
   _MyAppState createState() => _MyAppState();
+  
 }
-
 
 class _MyAppState extends State<MyApp> {
   // * load the AtClientPreference in the background
@@ -53,4 +53,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-

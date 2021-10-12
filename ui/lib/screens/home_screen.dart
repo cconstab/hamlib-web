@@ -15,13 +15,10 @@ class HomeScreen extends StatelessWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text(
-            "HamLib-Web UI",
-            style: GoogleFonts.poppins(
-              fontSize: 36,
-              textStyle: TextStyle(fontWeight: FontWeight.bold),
-              color: UItheme.viridianGreen
-            ),
+          const Text(
+            "HAMLIB-WEB UI",
+            style:  TextStyle(fontFamily: 'LED', fontSize: 38, letterSpacing: 5, color: UItheme.viridianGreen, fontWeight: FontWeight.bold),
+
           ),
           OnboardingDialog()
         ],

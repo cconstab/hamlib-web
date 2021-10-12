@@ -62,7 +62,7 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
             DropdownButton(
               dropdownColor: UItheme.secondaryColor,
               value: _atsign,
-              style: TextStyle(color: UItheme.viridianGreen, fontWeight: FontWeight.bold ),
+              style: const TextStyle(color: UItheme.middleBlueGreen, fontWeight: FontWeight.bold,fontSize: 36 ),
               items: _atSignsList
                   .map((atsign) =>
                       DropdownMenuItem(child: Text(atsign), value: atsign))
@@ -92,8 +92,9 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
   Widget _onboard(String atSign, String text) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: UItheme.rufous,
+        primary: UItheme.middleBlueGreen,
         onPrimary: UItheme.richBlackFOGRA29
+
       ),
       onPressed: () async {
         var preference = await loadAtClientPreference();
@@ -153,10 +154,10 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
             _showResetDialog(context, false);
           },
           style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.red)),
-          child: Text(
+              backgroundColor: MaterialStateProperty.all(UItheme.viridianGreen)),
+          child: const Text(
             "Reset @signs",
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: UItheme.richBlackFOGRA29),
           ),
         ),
       ],

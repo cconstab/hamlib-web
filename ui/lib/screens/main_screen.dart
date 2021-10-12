@@ -1,56 +1,41 @@
+//import 'dart:html';
+
 import 'package:flutter/material.dart';
-import 'package:ui/Theme/ui_theme.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ui/components/create_radio_widget.dart';
+import 'package:mdi/mdi.dart';
+import 'package:ui/theme/ui_theme.dart';
 
 class MainScreen extends StatefulWidget {
-  static const String id = '/main';
   const MainScreen({Key key}) : super(key: key);
-
+  static const String id = '/main';
   @override
-  State<StatefulWidget> createState() => _MainScreenState();
+  _MainScreenState createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: UItheme.richBlackFOGRA29,
-        appBar: PreferredSize(
-            preferredSize:
-                Size.fromHeight(MediaQuery.of(context).size.height * 0.05),
-            child: AppBar(
-                backgroundColor: UItheme.viridianGreen,
-                automaticallyImplyLeading: true,
-                flexibleSpace: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(10, 10, 0, 0),
-                  child: Text(
-                    'HamLib-Web',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
-                        fontSize: 32,
-                        textStyle: TextStyle(fontWeight: FontWeight.bold),
-                        color: UItheme.mahogany),
-                        
-                  ),
-                ))),
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: UItheme.richBlackFOGRA29,
+        appBar: AppBar(
+          titleTextStyle: const TextStyle(fontFamily: 'LED',fontSize: 36,letterSpacing: 5),
+          title: const Text(
+            'HAMLIB-WEB UI',
+            ),
+          backgroundColor: UItheme.viridianGreen,
+        ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: UItheme.middleBlueGreen,
-          elevation: 8,
-          onPressed: () async {
-                       await showModalBottomSheet(
-              isScrollControlled: true,
-              
-              context: context,
-              builder: (context) {
-                return Container(
-                  height: 1000,
-                  child: CreateRadioWidget(),
-                );
-              },
-            );
+          backgroundColor: UItheme.viridianGreen,
+          onPressed: () {
+            // ignore: avoid_print
+            print('pressed');
           },
-          child: Icon(Icons.add),
-        ));
+          child: const Icon(Mdi.plus),
+          
+        ),
+        
+      ),
+    );
   }
 }
