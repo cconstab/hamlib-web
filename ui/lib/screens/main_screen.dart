@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 import 'package:ui/theme/ui_theme.dart';
 import 'package:ui/widgets/radio_card.dart';
+import 'package:ui/models/radio_model.dart';
+
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key key}) : super(key: key);
@@ -13,14 +15,41 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  RadioCard bob =  RadioCard('ICOM 7100');
-  RadioCard bob1 =  RadioCard('YAESU FTDX3000');
-  RadioCard bob2 =  RadioCard('YAESU FT991');
-  RadioCard bob3 =  RadioCard('ICOM 705');
-  RadioCard bob4 =  RadioCard('YAESU FT300');
-  RadioCard bob5 =  RadioCard('YAESU FT400D');
-  RadioCard bob6 =  RadioCard('YAESU FT400D');
-  int i=29999;
+
+List<HamRadio> radios = [
+  HamRadio(
+    radioName:"ICOM 7100",
+    vfoaFrequency: 4000,
+    vfoaModulationMode: "USB",
+    vfoaOperatingMode: "Phone",
+    vfobFrequency: 2000,
+    vfobModulationMode: "LSB",
+    vfobOperatingMode: "DSTAR",
+    ipAddress: "192.168.1.2",
+    portNumber: 7100
+  ),
+  HamRadio(
+    radioName:"YAESU FT991a",
+    vfoaFrequency: 4500,
+    vfoaModulationMode: "USB",
+    vfoaOperatingMode: "Digital",
+    vfobFrequency: 3000,
+    vfobModulationMode: "LSB",
+    vfobOperatingMode: "Phone",
+    ipAddress: "192.168.1.2",
+    portNumber: 9100
+  )
+
+];
+
+  // RadioCard bob =  RadioCard('ICOM 7100');
+  // RadioCard bob1 =  RadioCard('YAESU FTDX3000');
+  // RadioCard bob2 =  RadioCard('YAESU FT991');
+  // RadioCard bob3 =  RadioCard('ICOM 705');
+  // RadioCard bob4 =  RadioCard('YAESU FT300');
+  // RadioCard bob5 =  RadioCard('YAESU FT400D');
+  // RadioCard bob6 =  RadioCard('YAESU FT400D');
+  // int i=29999;
 
 
   @override
@@ -40,16 +69,13 @@ class _MainScreenState extends State<MainScreen> {
             backgroundColor: UItheme.viridianGreen,
             onPressed: () {
               // ignore: avoid_print
-              print('pressed  $i');
+              print('pressed');
               //bob.changeFreq(i++);
-              setState(() {
-                
-              });
             },
             child: const Icon(Mdi.plus),
           ),
           body: ListView(
-            children: [bob, bob1, bob2, bob3, bob4, bob5, bob6],
+            children: radios.map((hamradios) => RadioCard(hamradios)).toList(),
           )),
     );
   }
