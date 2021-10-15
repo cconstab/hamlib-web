@@ -4,20 +4,26 @@ import 'package:ui/models/radio_model.dart';
 
 class RadioCard extends StatefulWidget {
   final HamRadio hamradio;
-  final Function delete;
-  const RadioCard({Key key, this.hamradio, this.delete}) : super(key: key);
+  final Function deleteradio;
+
+  const RadioCard({Key key, this.hamradio, this.deleteradio}) : super(key: key);
 
   @override
   _RadioCardState createState() => _RadioCardState();
 }
 
 class _RadioCardState extends State<RadioCard> {
+
+
   _RadioCardState();
   @override
   Widget build(BuildContext context) {
     HamRadio radio = widget.hamradio;
-    Function delete = widget.delete;
+    Function deletecard = widget.deleteradio;
+
+
     return ExpansionCard(
+      initiallyExpanded: false,
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -75,7 +81,7 @@ class _RadioCardState extends State<RadioCard> {
         Row(
           children: [
             TextButton.icon(
-                onPressed: delete,
+                onPressed: deletecard,
                 icon: const Icon(Icons.delete, color: Colors.white),
                 label: const Text(
                   'DELETE',
@@ -86,7 +92,7 @@ class _RadioCardState extends State<RadioCard> {
                       letterSpacing: 5),
                 )),
             TextButton.icon(
-                onPressed: () {},
+                onPressed: deletecard,
                 icon: const Icon(Icons.edit, color: Colors.white),
                 label: const Text(
                   'EDIT',
@@ -100,5 +106,7 @@ class _RadioCardState extends State<RadioCard> {
         )
       ],
     );
+
+  
   }
 }

@@ -42,6 +42,7 @@ dependencies:
   at_app_flutter: 2.0.0
   expansion_card: ^0.1.0
   timer_builder: ^2.0.0
+  expansion_tile_card: ^2.0.0
 
 dev_dependencies:
   flutter_test:

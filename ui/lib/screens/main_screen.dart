@@ -14,7 +14,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,19 +30,19 @@ class _MainScreenState extends State<MainScreen> {
           floatingActionButton: FloatingActionButton(
             backgroundColor: UItheme.viridianGreen,
             onPressed: () {
-              // ignore: avoid_print
               print('pressed');
-              //bob.changeFreq(i++);
             },
             child: const Icon(Mdi.plus),
           ),
           body: ListView(
             children: radios
                 .map((hamradio) => RadioCard(
+                    key: UniqueKey(),
                     hamradio: hamradio,
-                    delete: () {
+                    deleteradio: () {
                       setState(() {
                         radios.remove(hamradio);
+                        print('SetState');
                       });
                     }))
                 .toList(),
