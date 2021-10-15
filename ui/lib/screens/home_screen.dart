@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:ui/Theme/ui_theme.dart';
 
 import 'package:ui/widgets/onboarding_dialog.dart';
 
 class HomeScreen extends StatelessWidget {
-  static final String id = '/home';
+  static const String id = '/home';
   const HomeScreen({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
