@@ -4,7 +4,7 @@ class HamRadio {
   String vfoaModulationMode;
   String vfoaOperatingMode;
   int vfobFrequency;
-   String vfobModulationMode;
+  String vfobModulationMode;
   String vfobOperatingMode;
   String ipAddress;
   int portNumber;
