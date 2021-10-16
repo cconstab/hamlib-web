@@ -5,6 +5,7 @@ import 'package:at_client_mobile/at_client_mobile.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:at_app_flutter/at_app_flutter.dart';
 import 'package:ui/screens/main_screen.dart';
+import 'package:ui/screens/new_radio.dart';
 import 'package:ui/theme/ui_theme.dart';
 import 'package:ui/screens/home_screen.dart';
 
@@ -47,7 +48,8 @@ class _MyAppState extends State<MyApp> {
       // * The onboarding screen (first screen)
       routes: {
         HomeScreen.id: (_) => const HomeScreen(),
-        MainScreen.id: (_) => const MainScreen()
+        MainScreen.id: (_) => const MainScreen(),
+        NewRadio.id: (_) => const NewRadio()
       },
       initialRoute: HomeScreen.id,
     );

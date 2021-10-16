@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
+import 'package:ui/screens/new_radio.dart';
 import 'package:ui/theme/ui_theme.dart';
 import 'package:ui/widgets/radio_card.dart';
 import 'package:ui/data/radios.dart';
@@ -31,6 +32,7 @@ class _MainScreenState extends State<MainScreen> {
             backgroundColor: UItheme.viridianGreen,
             onPressed: () {
               print('pressed');
+              Navigator.of(context).pushNamed(NewRadio.id);
             },
             child: const Icon(Mdi.plus),
           ),
