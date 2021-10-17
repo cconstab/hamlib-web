@@ -1,5 +1,6 @@
 class HamRadio {
   String radioName;
+  bool active;
   int vfoaFrequency;
   String vfoaModulationMode;
   String vfoaOperatingMode;
@@ -11,6 +12,7 @@ class HamRadio {
 
   HamRadio(
       {this.radioName,
+      this.active,
       this.vfoaFrequency,
       this.vfoaModulationMode,
       this.vfoaOperatingMode,

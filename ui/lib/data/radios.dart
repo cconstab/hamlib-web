@@ -5,6 +5,7 @@
   List<HamRadio> radios = [
     HamRadio(
         radioName: "ICOM 7100",
+        active: true,
         vfoaFrequency: 4000,
         vfoaModulationMode: "USB",
         vfoaOperatingMode: "Phone",
@@ -13,6 +14,7 @@
         vfobOperatingMode: "DSTAR",
         ipAddress: "192.168.1.2",
         portNumber: 7100),
+        
     HamRadio(
         radioName: "YAESU FT991a",
         vfoaFrequency: 4500,

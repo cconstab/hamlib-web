@@ -33,14 +33,31 @@ class _NewRadioState extends State<NewRadio> {
           key: _formKey,
           child: Column(
             children: [
-
-              FormBuilderTextField(name: 'Radio',
-                      style: TextStyle(
+              FormBuilderTextField(
+                initialValue: 'RADIO NAME',
+                textCapitalization: TextCapitalization.characters,
+                name: 'radioName',
+                      style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 15,
+                      fontSize: 30,
                       fontFamily: 'LED',
                       letterSpacing: 5)),
-              RaisedButton(onPressed: (p), color: Colors.white,)
+              FormBuilderTextField(
+                initialValue: 'IP ADDRESS',
+                name: 'ipAddress',
+                      style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                      fontFamily: 'LED',
+                      letterSpacing: 5)),
+              FormBuilderTextField(
+                initialValue: 'PORT NUMBER',
+                name: 'portNumber',
+                      style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                      fontFamily: 'LED',
+                      letterSpacing: 5)),             
             ],
           )),
     ));
