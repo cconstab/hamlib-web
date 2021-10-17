@@ -5,8 +5,10 @@ import 'package:ui/models/radio_model.dart';
 class RadioCard extends StatefulWidget {
   final HamRadio hamradio;
   final Function deleteradio;
+  final Function activeradio;
 
-  const RadioCard({Key key, this.hamradio, this.deleteradio}) : super(key: key);
+  const RadioCard({Key key, this.hamradio, this.deleteradio, this.activeradio})
+      : super(key: key);
 
   @override
   _RadioCardState createState() => _RadioCardState();
@@ -14,11 +16,11 @@ class RadioCard extends StatefulWidget {
 
 class _RadioCardState extends State<RadioCard> {
   _RadioCardState();
-  bool _active = false;
   @override
   Widget build(BuildContext context) {
     HamRadio radio = widget.hamradio;
     Function deletecard = widget.deleteradio;
+    Function activeradio = widget.activeradio;
 
     return ExpansionCard(
         initiallyExpanded: false,
@@ -92,7 +94,7 @@ class _RadioCardState extends State<RadioCard> {
                         fontFamily: 'LED',
                         letterSpacing: 5),
                   )),
-                  const Spacer(),
+              const Spacer(),
               TextButton.icon(
                   onPressed: deletecard,
                   icon: const Icon(Icons.edit, color: Colors.white),
@@ -105,36 +107,32 @@ class _RadioCardState extends State<RadioCard> {
                         letterSpacing: 5),
                   )),
             ]),
-          Theme(
-            data: ThemeData(unselectedWidgetColor: Colors.white),
-            child:
-            CheckboxListTile(
-              controlAffinity: ListTileControlAffinity.trailing,
-              onChanged: (newValue) {
-                setState(() {
-                  print('hello');
-                  _active = newValue;
-                });
-              },
-              value: _active,
-              activeColor: Colors.red,
-              checkColor: Colors.white,
-              selectedTileColor: Colors.white,
-              //tileColor: Colors.white,
-              title: const Text(
-                'ACTIVE',
-                textAlign: TextAlign.end,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 15,
-                    fontFamily: 'LED',
-                    letterSpacing: 5),
-              ),
-             )
-            )
-          ]
-        )
-      ]
-    );
+            Theme(
+                data: ThemeData(unselectedWidgetColor: Colors.white),
+                child: CheckboxListTile(
+                  value: radio.active,
+                  controlAffinity: ListTileControlAffinity.trailing,
+                  onChanged: (newValue) {
+                    setState(() {
+                      print('hello');
+                      activeradio.call(newValue);
+                    });
+                  },
+                  activeColor: Colors.red,
+                  checkColor: Colors.white,
+                  selectedTileColor: Colors.white,
+                  //tileColor: Colors.white,
+                  title: const Text(
+                    'ACTIVE',
+                    textAlign: TextAlign.end,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontFamily: 'LED',
+                        letterSpacing: 5),
+                  ),
+                ))
+          ])
+        ]);
   }
 }

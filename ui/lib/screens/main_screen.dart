@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 import 'package:at_client_mobile/at_client_mobile.dart';
 
-
 import 'package:ui/models/radio_model.dart';
 import 'package:ui/screens/new_radio.dart';
 import 'package:ui/theme/ui_theme.dart';
@@ -12,19 +11,16 @@ import 'package:ui/widgets/radio_card.dart';
 import 'package:ui/data/radios.dart';
 
 class MainScreen extends StatefulWidget {
-   const MainScreen({Key key}) : super(key: key);
+  const MainScreen({Key key}) : super(key: key);
   static const String id = '/main';
 
-  
   //ClientSdkService.getInstance().getAtSign().toString();
-
 
   @override
   _MainScreenState createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,7 +29,7 @@ class _MainScreenState extends State<MainScreen> {
           appBar: AppBar(
             titleTextStyle: const TextStyle(
                 fontFamily: 'LED', fontSize: 36, letterSpacing: 5),
-            title:  const Text(
+            title: const Text(
               'HAMLIB-WEB UI ',
             ),
             backgroundColor: UItheme.viridianGreen,
@@ -43,7 +39,7 @@ class _MainScreenState extends State<MainScreen> {
             onPressed: () async {
               print('pressed');
               //HamRadio newradio =
-                  //await Navigator.of(context).pushNamed(NewRadio.id);
+              //await Navigator.of(context).pushNamed(NewRadio.id);
               //radios.add(newradio);
               Navigator.of(context).pushNamed(NewRadio.id);
             },
@@ -58,6 +54,11 @@ class _MainScreenState extends State<MainScreen> {
                       setState(() {
                         radios.remove(hamradio);
                         print('SetState');
+                      });
+                    },
+                    activeradio: (newvalue) {
+                      setState(() {
+                        hamradio.active = newvalue;
                       });
                     }))
                 .toList(),
