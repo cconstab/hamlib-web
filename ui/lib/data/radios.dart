@@ -5,7 +5,7 @@
   List<HamRadio> radios = [
     HamRadio(
         radioName: "ICOM 7100",
-        active: true,
+        active: false,
         vfoaFrequency: 4000,
         vfoaModulationMode: "USB",
         vfoaOperatingMode: "Phone",
@@ -17,7 +17,7 @@
         
     HamRadio(
         radioName: "YAESU FT991a",
-        active: true,
+        active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
         vfoaOperatingMode: "Digital",
@@ -28,7 +28,7 @@
         portNumber: 9100),
     HamRadio(
         radioName: "YAESU FT991a",
-        active: true,
+        active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
         vfoaOperatingMode: "Digital",
@@ -39,7 +39,7 @@
         portNumber: 9100),
            HamRadio(
         radioName: "YAESU FT991a",
-        active: true,
+        active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
         vfoaOperatingMode: "Digital",
@@ -50,7 +50,7 @@
         portNumber: 9100),
            HamRadio(
         radioName: "YAESU FT991a",
-        active: true,
+        active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
         vfoaOperatingMode: "Digital",
@@ -61,7 +61,7 @@
         portNumber: 9100),
            HamRadio(
         radioName: "YAESU FT991a",
-        active: true,
+        active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
         vfoaOperatingMode: "Digital",
@@ -72,7 +72,7 @@
         portNumber: 9100),
            HamRadio(
         radioName: "YAESU FT991a",
-        active: true,
+        active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
         vfoaOperatingMode: "Digital",
@@ -83,7 +83,7 @@
         portNumber: 9100),
            HamRadio(
         radioName: "YAESU FT991a",
-        active: true,
+        active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
         vfoaOperatingMode: "Digital",
@@ -94,7 +94,7 @@
         portNumber: 9100),
            HamRadio(
         radioName: "YAESU FT991a",
-        active: true,
+        active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
         vfoaOperatingMode: "Digital",
@@ -105,7 +105,7 @@
         portNumber: 9100),
            HamRadio(
         radioName: "YAESU FT991a",
-        active: true,
+        active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
         vfoaOperatingMode: "Digital",
@@ -116,7 +116,7 @@
         portNumber: 9100),
            HamRadio(
         radioName: "YAESU FT991a",
-        active: true,
+        active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
         vfoaOperatingMode: "Digital",
@@ -127,7 +127,7 @@
         portNumber: 9100),
            HamRadio(
         radioName: "YAESU FT991a",
-        active: true,
+        active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
         vfoaOperatingMode: "Digital",

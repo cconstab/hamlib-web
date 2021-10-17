@@ -111,7 +111,7 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
             if ((atsign != null) &&
                 !(_atSignsList.contains(atsign))) {
               setState(() {
-                if (_atSignsList == null) _atSignsList = [];
+                _atSignsList;
                 _atSignsList.add(atsign);
                 _atsign = atsign;
               });
@@ -138,7 +138,7 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
             onPressed: () {
               Navigator.of(context).pushReplacementNamed(HomeScreen.id);
             },
-            child: Text('Close'),
+            child: const Text('Close'),
           ),
         ],
       ),
@@ -171,8 +171,8 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
 
   Widget _resetAtsignDialog(BuildContext context) {
     return AlertDialog(
-      title: Text("Reset your atsigns"),
-      content: Container(
+      title: const Text("Reset your atsigns"),
+      content: SizedBox(
         height: 360,
         width: 240,
         child: SingleChildScrollView(
@@ -190,7 +190,7 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.red),
                     ),
-                    child: Text("Reset", style: TextStyle(color: Colors.white)),
+                    child: const Text("Reset", style: TextStyle(color: Colors.white)),
                     onPressed: () => _resetAtSign(_atSignsList[index]),
                   )
                 ],
@@ -201,7 +201,7 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
       ),
       actions: [
         TextButton(
-          child: Text('Cancel'),
+          child: const Text('Cancel'),
           onPressed: () {
             Navigator.pop(context);
           },
