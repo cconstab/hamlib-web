@@ -28,7 +28,7 @@ Future<AtClientPreference> loadAtClientPreference() async {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -47,9 +47,9 @@ class _MyAppState extends State<MyApp> {
       ),
       // * The onboarding screen (first screen)
       routes: {
-        HomeScreen.id: (_) => const HomeScreen(),
-        MainScreen.id: (_) => const MainScreen(),
-        NewRadio.id: (_) => const NewRadio()
+        HomeScreen.id: (_) => HomeScreen(),
+        MainScreen.id: (_) => MainScreen(),
+        NewRadio.id: (_) => NewRadio()
       },
       initialRoute: HomeScreen.id,
     );

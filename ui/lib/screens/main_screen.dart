@@ -11,7 +11,7 @@ import 'package:ui/widgets/radio_card.dart';
 import 'package:ui/data/radios.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({Key key}) : super(key: key);
+  const MainScreen({Key? key}) : super(key: key);
   static const String id = '/main';
 
   //ClientSdkService.getInstance().getAtSign().toString();

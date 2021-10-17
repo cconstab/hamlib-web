@@ -10,16 +10,16 @@ import 'package:ui/screens/main_screen.dart';
 import 'package:ui/widgets/error_dialog.dart';
 
 class OnboardingDialog extends StatefulWidget {
-  OnboardingDialog({Key key}) : super(key: key);
+  const OnboardingDialog({Key? key}) : super(key: key);
 
   @override
   _OnboardingDialogState createState() => _OnboardingDialogState();
 }
 
 class _OnboardingDialogState extends State<OnboardingDialog> {
-  KeyChainManager _keyChainManager = KeyChainManager.getInstance();
+  final KeyChainManager _keyChainManager = KeyChainManager.getInstance();
   List<String> _atSignsList = [];
-  String _atsign;
+   String ?_atsign;
 
   @override
   void initState() {
@@ -31,12 +31,12 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
     var atSignsList = await _keyChainManager.getAtSignListFromKeychain();
     if (atSignsList?.isNotEmpty ?? false) {
       setState(() {
-        _atSignsList = atSignsList;
+        _atSignsList = atSignsList!;
         _atsign = atSignsList[0];
       });
     } else {
       setState(() {
-        _atSignsList = atSignsList;
+        _atSignsList = atSignsList!;
       });
     }
   }
@@ -48,9 +48,9 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        if (_atSignsList?.isNotEmpty ?? false) _previousOnboard(),
+        if (_atSignsList.isNotEmpty) _previousOnboard(),
         _newOnboard(),
-        if (_atSignsList?.isNotEmpty ?? false) _resetButton(),
+        if (_atSignsList.isNotEmpty) _resetButton(),
       ],
     );
   }
@@ -69,7 +69,7 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
                   .map((atsign) =>
                       DropdownMenuItem(child: Text(atsign), value: atsign))
                   .toList(),
-              onChanged: (String value) {
+              onChanged: (String ?value) {
                 if (value != null) {
                   setState(() {
                     _atsign = value;
@@ -77,10 +77,10 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
                 }
               },
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
-            _onboard(_atsign, "Go!")
+            _onboard(_atsign!, "Go!")
           ],
         ),
       ],
@@ -109,7 +109,7 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
           appAPIKey: AtEnv.appApiKey,
           onboard: (value, atsign) {
             if ((atsign != null) &&
-                !(_atSignsList?.contains(atsign) ?? false)) {
+                !(_atSignsList.contains(atsign))) {
               setState(() {
                 if (_atSignsList == null) _atSignsList = [];
                 _atSignsList.add(atsign);

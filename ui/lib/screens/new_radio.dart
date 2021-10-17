@@ -5,7 +5,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:ui/theme/ui_theme.dart';
 
 class NewRadio extends StatefulWidget {
-  const NewRadio({Key key}) : super(key: key);
+  const NewRadio({Key? key}) : super(key: key);
   static const String id = '/newradio';
 
   @override

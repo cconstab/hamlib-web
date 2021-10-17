@@ -67,16 +67,16 @@ class UItheme {
 
 extension TextStyleHelper on TextStyle {
   TextStyle override(
-          {String fontFamily,
-          Color color,
-          double fontSize,
-          FontWeight fontWeight,
-          FontStyle fontStyle}) =>
+          {required String fontFamily,
+          required Color color,
+          required double fontSize,
+          required FontWeight fontWeight,
+          required FontStyle fontStyle}) =>
       GoogleFonts.getFont(
         fontFamily,
-        color: color ?? this.color,
-        fontSize: fontSize ?? this.fontSize,
-        fontWeight: fontWeight ?? this.fontWeight,
-        fontStyle: fontStyle ?? this.fontStyle,
+        color: color,
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        fontStyle: fontStyle,
       );
 }

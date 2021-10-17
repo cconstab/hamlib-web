@@ -11,14 +11,14 @@ class HamRadio {
   int portNumber;
 
   HamRadio(
-      {this.radioName,
-      this.active,
-      this.vfoaFrequency,
-      this.vfoaModulationMode,
-      this.vfoaOperatingMode,
-      this.vfobFrequency,
-      this.vfobModulationMode,
-      this.vfobOperatingMode,
-      this.ipAddress,
-      this.portNumber});
+      {required this.radioName,
+      required this.active,
+      required this.vfoaFrequency,
+      required this.vfoaModulationMode,
+      required this.vfoaOperatingMode,
+      required this.vfobFrequency,
+      required this.vfobModulationMode,
+      required this.vfobOperatingMode,
+      required this.ipAddress,
+      required this.portNumber});
 }

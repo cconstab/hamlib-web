@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:expansion_card/expansion_card.dart';
+import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:ui/models/radio_model.dart';
 
 class RadioCard extends StatefulWidget {
   final HamRadio hamradio;
-  final Function deleteradio;
+  final VoidCallback? deleteradio;
   final Function activeradio;
 
-  const RadioCard({Key key, this.hamradio, this.deleteradio, this.activeradio})
+  const RadioCard({Key? key, required this.hamradio, required this.deleteradio, required this.activeradio})
       : super(key: key);
 
   @override
@@ -19,10 +19,10 @@ class _RadioCardState extends State<RadioCard> {
   @override
   Widget build(BuildContext context) {
     HamRadio radio = widget.hamradio;
-    Function deletecard = widget.deleteradio;
+    VoidCallback? deletecard = widget.deleteradio;
     Function activeradio = widget.activeradio;
 
-    return ExpansionCard(
+    return ExpansionTileCard(
         initiallyExpanded: false,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
