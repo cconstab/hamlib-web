@@ -25,6 +25,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
           backgroundColor: UItheme.richBlackFOGRA29,
           appBar: AppBar(
             titleTextStyle: const TextStyle(
@@ -35,6 +36,7 @@ class _MainScreenState extends State<MainScreen> {
             backgroundColor: UItheme.viridianGreen,
           ),
           floatingActionButton: FloatingActionButton(
+            
             backgroundColor: UItheme.viridianGreen,
             onPressed: () async {
               print('pressed');
@@ -62,7 +64,9 @@ class _MainScreenState extends State<MainScreen> {
                       });
                     }))
                 .toList(),
-          )),
+          )
+          
+          ),
     );
   }
 }

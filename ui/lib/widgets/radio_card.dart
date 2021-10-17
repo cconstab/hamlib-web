@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
+import 'package:ui/Theme/ui_theme.dart';
 import 'package:ui/models/radio_model.dart';
 
 class RadioCard extends StatefulWidget {
@@ -23,6 +24,8 @@ class _RadioCardState extends State<RadioCard> {
     Function activeradio = widget.activeradio;
 
     return ExpansionTileCard(
+        baseColor: UItheme.richBlackFOGRA29,
+        expandedColor: UItheme.richBlackFOGRA29,
         initiallyExpanded: false,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,21 +34,21 @@ class _RadioCardState extends State<RadioCard> {
                 style:
                     // ignore: prefer_const_constructors
                     TextStyle(
-                        fontFamily: 'LED', fontSize: 20, letterSpacing: 5)),
+                        fontFamily: 'LED', fontSize: 30, letterSpacing: 5,color: Colors.green)),
             // ignore: prefer_const_constructors
             Text(
                 "VFO A ${radio.vfoaFrequency.toString().padRight(10)} ${radio.vfoaModulationMode}",
                 style:
                     // ignore: prefer_const_constructors
                     TextStyle(
-                        fontFamily: 'LED', fontSize: 20, letterSpacing: 5)),
+                        fontFamily: 'LED', fontSize: 30, letterSpacing: 5,color: Colors.white)),
             // ignore: prefer_const_constructors
             Text(
                 "VFO B ${radio.vfobFrequency.toString().padRight(10)} ${radio.vfobModulationMode}",
                 style:
                     // ignore: prefer_const_constructors
                     TextStyle(
-                        fontFamily: 'LED', fontSize: 20, letterSpacing: 5)),
+                        fontFamily: 'LED', fontSize: 30, letterSpacing: 5,color: Colors.white)),
           ],
         ),
         children: <Widget>[
@@ -105,13 +108,15 @@ class _RadioCardState extends State<RadioCard> {
                         fontSize: 15,
                         fontFamily: 'LED',
                         letterSpacing: 5),
-                  )),
+                  ),
+                  ),
+                  const Spacer(),
             ]),
             Theme(
                 data: ThemeData(unselectedWidgetColor: Colors.white),
                 child: CheckboxListTile(
                   value: radio.active,
-                  controlAffinity: ListTileControlAffinity.trailing,
+                  controlAffinity: ListTileControlAffinity.leading,
                   onChanged: (newValue) {
                     setState(() {
                       print('hello');
@@ -124,7 +129,7 @@ class _RadioCardState extends State<RadioCard> {
                   //tileColor: Colors.white,
                   title: const Text(
                     'ACTIVE',
-                    textAlign: TextAlign.end,
+                    textAlign: TextAlign.left,
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 15,
