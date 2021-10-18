@@ -14,7 +14,6 @@ class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
   static const String id = '/main';
 
-
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -23,6 +22,8 @@ class _MainScreenState extends State<MainScreen> {
   String? currentAtsign;
   late AtClient atClient;
   late AtClientManager atClientManager;
+  
+
 
   @override
   void initState() {
@@ -31,6 +32,18 @@ class _MainScreenState extends State<MainScreen> {
     atClient = atClientManager.atClient;
     currentAtsign = atClient.getCurrentAtSign();
     currentAtsign = currentAtsign!.toUpperCase();
+  }
+
+  @override
+  void setState(VoidCallback fn) {
+       super.setState(fn);
+    // TODO: implement setState
+        radios.sort((a, b) {
+                  if (b.active) {
+                    return 1;
+                  }
+                  return -1;
+                });
   }
 
   @override

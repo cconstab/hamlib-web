@@ -4,7 +4,7 @@
   
   List<HamRadio> radios = [
     HamRadio(
-        radioName: "ICOM 7100",
+        radioName: "ICOM 1",
         active: false,
         vfoaFrequency: 4000,
         vfoaModulationMode: "USB",
@@ -16,7 +16,7 @@
         portNumber: 7100),
         
     HamRadio(
-        radioName: "YAESU FT991a",
+        radioName: "YAESU 1",
         active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
@@ -27,7 +27,7 @@
         ipAddress: "192.168.1.2",
         portNumber: 9100),
     HamRadio(
-        radioName: "YAESU FT991a",
+        radioName: "YAESU 2",
         active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
@@ -38,7 +38,7 @@
         ipAddress: "192.168.1.2",
         portNumber: 9100),
            HamRadio(
-        radioName: "YAESU FT991a",
+        radioName: "YAESU 3",
         active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
@@ -49,7 +49,7 @@
         ipAddress: "192.168.1.2",
         portNumber: 9100),
            HamRadio(
-        radioName: "YAESU FT991a",
+        radioName: "YAESU 4",
         active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
@@ -60,7 +60,7 @@
         ipAddress: "192.168.1.2",
         portNumber: 9100),
            HamRadio(
-        radioName: "YAESU FT991a",
+        radioName: "YAESU 5",
         active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
@@ -71,7 +71,7 @@
         ipAddress: "192.168.1.2",
         portNumber: 9100),
            HamRadio(
-        radioName: "YAESU FT991a",
+        radioName: "YAESU 6",
         active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
@@ -82,7 +82,7 @@
         ipAddress: "192.168.1.2",
         portNumber: 9100),
            HamRadio(
-        radioName: "YAESU FT991a",
+        radioName: "YAESU 7",
         active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
@@ -93,7 +93,7 @@
         ipAddress: "192.168.1.2",
         portNumber: 9100),
            HamRadio(
-        radioName: "YAESU FT991a",
+        radioName: "YAESU 8",
         active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
@@ -104,7 +104,7 @@
         ipAddress: "192.168.1.2",
         portNumber: 9100),
            HamRadio(
-        radioName: "YAESU FT991a",
+        radioName: "YAESU 9",
         active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
@@ -115,7 +115,7 @@
         ipAddress: "192.168.1.2",
         portNumber: 9100),
            HamRadio(
-        radioName: "YAESU FT991a",
+        radioName: "YAESU 10",
         active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
@@ -126,7 +126,7 @@
         ipAddress: "192.168.1.2",
         portNumber: 9100),
            HamRadio(
-        radioName: "YAESU FT991a",
+        radioName: "YAESU 11",
         active: false,
         vfoaFrequency: 4500,
         vfoaModulationMode: "USB",
