@@ -26,6 +26,7 @@ class _RadioCardState extends State<RadioCard> {
     return ExpansionTileCard(
         baseColor: UItheme.richBlackFOGRA29,
         expandedColor: UItheme.richBlackFOGRA29,
+        shadowColor: UItheme.alloyOrange,
         initiallyExpanded: false,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
