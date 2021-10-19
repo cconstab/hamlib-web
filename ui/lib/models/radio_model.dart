@@ -12,7 +12,7 @@ class HamRadio {
 
   HamRadio(
       {required this.radioName,
-       this.active,
+       this.active = false,
        this.vfoaFrequency,
        this.vfoaModulationMode,
        this.vfoaOperatingMode,
