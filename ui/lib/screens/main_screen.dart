@@ -6,6 +6,7 @@ import 'package:at_client_mobile/at_client_mobile.dart';
 import 'package:ui/main.dart';
 
 import 'package:ui/screens/new_radio.dart';
+import 'package:ui/models/radio_model.dart';
 import 'package:ui/theme/ui_theme.dart';
 import 'package:ui/widgets/radio_card.dart';
 import 'package:ui/data/radios.dart';
@@ -22,8 +23,6 @@ class _MainScreenState extends State<MainScreen> {
   String? currentAtsign;
   late AtClient atClient;
   late AtClientManager atClientManager;
-  
-
 
   @override
   void initState() {
@@ -36,14 +35,14 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void setState(VoidCallback fn) {
-       super.setState(fn);
+    super.setState(fn);
     // TODO: implement setState
-        radios.sort((a, b) {
-                  if (b.active) {
-                    return 1;
-                  }
-                  return -1;
-                });
+    radios.sort((a, b) {
+      if (b.active) {
+        return 1;
+      }
+      return -1;
+    });
   }
 
   @override
@@ -67,7 +66,16 @@ class _MainScreenState extends State<MainScreen> {
               //HamRadio newradio =
               //await Navigator.of(context).pushNamed(NewRadio.id);
               //radios.add(newradio);
-              Navigator.of(context).pushNamed(NewRadio.id);
+              //Navigator.of(context).pushNamed(NewRadio.id);
+              HamRadio? newradio = await Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const NewRadio()),
+              );
+              if (newradio != null) {
+                setState(() {
+                  radios.add(newradio);
+                });
+              }
             },
             child: const Icon(Mdi.plus),
           ),
@@ -79,7 +87,6 @@ class _MainScreenState extends State<MainScreen> {
                     deleteradio: () {
                       setState(() {
                         radios.remove(hamradio);
-                        print('SetState');
                       });
                     },
                     activeradio: (newvalue) {

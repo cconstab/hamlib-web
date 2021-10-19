@@ -24,8 +24,10 @@ class _RadioCardState extends State<RadioCard> {
     Function activeradio = widget.activeradio;
 
     return ExpansionTileCard(
+
         baseColor: UItheme.richBlackFOGRA29,
         expandedColor: UItheme.richBlackFOGRA29,
+        expandedTextColor: Colors.white,
         initiallyExpanded: false,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
