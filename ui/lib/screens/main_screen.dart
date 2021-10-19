@@ -9,7 +9,7 @@ import 'package:ui/screens/new_radio.dart';
 import 'package:ui/models/radio_model.dart';
 import 'package:ui/theme/ui_theme.dart';
 import 'package:ui/widgets/radio_card.dart';
-import 'package:ui/data/radios.dart';
+//import 'package:ui/data/radios.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -23,6 +23,8 @@ class _MainScreenState extends State<MainScreen> {
   String? currentAtsign;
   late AtClient atClient;
   late AtClientManager atClientManager;
+  List radios = [];
+
 
   @override
   void initState() {

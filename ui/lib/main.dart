@@ -25,6 +25,7 @@ Future<AtClientPreference> loadAtClientPreference() async {
         ..isLocalStoreRequired = true
       // TODO set the rest of your AtClientPreference here
       ;
+    
 }
 
 class MyApp extends StatefulWidget {

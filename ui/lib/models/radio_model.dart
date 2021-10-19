@@ -1,10 +1,10 @@
 class HamRadio {
   String? radioName;
   bool? active;
-  int? vfoaFrequency;
+  String? vfoaFrequency;
   String? vfoaModulationMode;
   String? vfoaOperatingMode;
-  int? vfobFrequency;
+  String? vfobFrequency;
   String? vfobModulationMode;
   String? vfobOperatingMode;
   String? ipAddress;
@@ -13,12 +13,12 @@ class HamRadio {
   HamRadio(
       {required this.radioName,
        this.active = false,
-       this.vfoaFrequency,
-       this.vfoaModulationMode,
-       this.vfoaOperatingMode,
-       this.vfobFrequency,
-       this.vfobModulationMode,
-       this.vfobOperatingMode,
+       this.vfoaFrequency = '0.000.00',
+       this.vfoaModulationMode = '---',
+       this.vfoaOperatingMode = '----',
+       this.vfobFrequency = '0.000.00',
+       this.vfobModulationMode = '---',
+       this.vfobOperatingMode = '----',
       required this.ipAddress,
       required this.portNumber});
 }
