@@ -38,7 +38,7 @@ class _MainScreenState extends State<MainScreen> {
     super.setState(fn);
     // TODO: implement setState
     radios.sort((a, b) {
-      if (b.active) {
+      if (b.active!) {
         return 1;
       }
       return -1;

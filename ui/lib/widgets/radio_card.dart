@@ -32,7 +32,7 @@ class _RadioCardState extends State<RadioCard> {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(radio.radioName,
+            Text('${radio.radioName}',
                 style:
                     // ignore: prefer_const_constructors
                     TextStyle(

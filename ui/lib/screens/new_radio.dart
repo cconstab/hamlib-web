@@ -90,6 +90,7 @@ class _NewRadioState extends State<NewRadio> {
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.max(context, 65535),
                         FormBuilderValidators.min(context, 1025),
+                         FormBuilderValidators.numeric(context),
                         FormBuilderValidators.required(context),
                       ]),
                       style: const TextStyle(
@@ -134,13 +135,13 @@ class _NewRadioState extends State<NewRadio> {
                               print('$radioname:$ipaddress:$portnumber');
                               var newradio = HamRadio(
                                   radioName: radioname,
-                                  active: false,
-                                  vfoaFrequency: 0,
-                                  vfoaModulationMode: '',
-                                  vfoaOperatingMode: '',
-                                  vfobFrequency: 0,
-                                  vfobModulationMode: '',
-                                  vfobOperatingMode: '',
+                                  // active: false,
+                                  // vfoaFrequency: 0,
+                                  // vfoaModulationMode: '',
+                                  // vfoaOperatingMode: '',
+                                  // vfobFrequency: 0,
+                                  // vfobModulationMode: '',
+                                  // vfobOperatingMode: '',
                                   ipAddress: ipaddress,
                                   portNumber: portnumberint);
                               Navigator.pop(context, newradio);
