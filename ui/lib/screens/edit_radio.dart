@@ -64,9 +64,9 @@ class _EditRadioState extends State<EditRadio> {
                                   .currentState!.fields['portNumber']!.value;
                               // int portnumberint = int.parse(portnumber);
                               // print(_formKey.currentState!.value);
-                              var newradio = HamRadio(
+                              var newradio = HamRadio.edited(
                                   radioName: radioname,
-                                  // active: false,
+                                  active: edithamradio.active,
                                   // vfoaFrequency: 0,
                                   // vfoaModulationMode: '',
                                   // vfoaOperatingMode: '',
@@ -85,6 +85,10 @@ class _EditRadioState extends State<EditRadio> {
                       const SizedBox(width: 20),
                     ],
                   )
-                ]))));
+                ]
+              )
+            )
+          )
+      );
   }
 }

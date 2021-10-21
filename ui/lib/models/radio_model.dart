@@ -13,7 +13,6 @@ class HamRadio {
 
   HamRadio(
       {
-      // this.id = const  _radioUuid(),
       required this.radioName,
       this.active = false,
       this.vfoaFrequency = '0.000.00',
@@ -23,7 +22,25 @@ class HamRadio {
       this.vfobModulationMode = '---',
       this.vfobOperatingMode = '----',
       required this.ipAddress,
-      required this.portNumber});
+      required this.portNumber
+      }
+      );
+
+  HamRadio.edited(
+      {
+      required this.radioName,
+      required this.active,
+      this.vfoaFrequency = '0.000.00',
+      this.vfoaModulationMode = '---',
+      this.vfoaOperatingMode = '----',
+      this.vfobFrequency = '0.000.00',
+      this.vfobModulationMode = '---',
+      this.vfobOperatingMode = '----',
+      required this.ipAddress,
+      required this.portNumber
+      }
+      );
+
 
 
 

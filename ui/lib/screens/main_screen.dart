@@ -1,16 +1,15 @@
-//import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 import 'package:at_client_mobile/at_client_mobile.dart';
-import 'package:ui/main.dart';
 
 import 'package:ui/screens/new_radio.dart';
 import 'package:ui/screens/edit_radio.dart';
 import 'package:ui/models/radio_model.dart';
 import 'package:ui/theme/ui_theme.dart';
 import 'package:ui/widgets/radio_card.dart';
-//import 'package:ui/data/radios.dart';
+// Saves some typing if you need some radios
+import 'package:ui/data/radios.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -24,7 +23,7 @@ class _MainScreenState extends State<MainScreen> {
   String? currentAtsign;
   late AtClient atClient;
   late AtClientManager atClientManager;
-  List radios = [];
+  //List radios = [];
 
   @override
   void initState() {
@@ -88,11 +87,12 @@ class _MainScreenState extends State<MainScreen> {
                     },
                     editradio: () async {
                         HamRadio edithamradio = radios[radios.indexOf(hamradio)];
-                        HamRadio editedhamradio =  await Navigator.push(
+                        var editedhamradio =  await Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => EditRadio(edithamradio: edithamradio),
                             ));
+
                       setState((){
                         radios.remove(hamradio);
                         radios.add(editedhamradio);
