@@ -40,7 +40,7 @@ class _MainScreenState extends State<MainScreen> {
     super.setState(fn);
     // TODO: implement setState
     radios.sort((a, b) {
-      if (b.active!) {
+      if (b.active) {
         return 1;
       }
       return -1;
@@ -64,11 +64,6 @@ class _MainScreenState extends State<MainScreen> {
           floatingActionButton: FloatingActionButton(
             backgroundColor: UItheme.viridianGreen,
             onPressed: () async {
-              print('pressed');
-              //HamRadio newradio =
-              //await Navigator.of(context).pushNamed(NewRadio.id);
-              //radios.add(newradio);
-              //Navigator.of(context).pushNamed(NewRadio.id);
               HamRadio? newradio = await Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const NewRadio()),
@@ -91,20 +86,16 @@ class _MainScreenState extends State<MainScreen> {
                         radios.remove(hamradio);
                       });
                     },
-                    editradio: () {
-                      setState(() {
-                        HamRadio a = radios[radios.indexOf(hamradio)];
-                        var b = radios.indexOf(hamradio);
-                        print(a.toString());
-                        print(b);
-                        
-                        hamradio = Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => EditRadio(
-                                  edithamradio: a ),
-                        ));
-                        radios[b] = hamradio;
+                    editradio: () async {
+                        HamRadio edithamradio = radios[radios.indexOf(hamradio)];
+                        HamRadio editedhamradio =  await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => EditRadio(edithamradio: edithamradio),
+                            ));
+                      setState((){
+                        radios.remove(hamradio);
+                        radios.add(editedhamradio);
                       });
                     },
                     activeradio: (newvalue) {
