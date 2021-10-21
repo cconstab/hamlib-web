@@ -30,7 +30,7 @@ class _EditRadioState extends State<EditRadio> {
               titleTextStyle: const TextStyle(
                   fontFamily: 'LED', fontSize: 36, letterSpacing: 5),
               title: const Text(
-                'NEW RADIO',
+                'EDIT RADIO',
                 textAlign: TextAlign.center,
               ),
               backgroundColor: UItheme.viridianGreen,

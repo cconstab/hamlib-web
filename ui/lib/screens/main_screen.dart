@@ -8,12 +8,14 @@ import 'package:ui/screens/edit_radio.dart';
 import 'package:ui/models/radio_model.dart';
 import 'package:ui/theme/ui_theme.dart';
 import 'package:ui/widgets/radio_card.dart';
+
 // Saves some typing if you need some radios
 import 'package:ui/data/radios.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
   static const String id = '/main';
+
 
   @override
   _MainScreenState createState() => _MainScreenState();
@@ -37,7 +39,6 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void setState(VoidCallback fn) {
     super.setState(fn);
-    // TODO: implement setState
     radios.sort((a, b) {
       if (b.active) {
         return 1;
