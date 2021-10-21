@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:at_client_mobile/at_client_mobile.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:at_app_flutter/at_app_flutter.dart';
+import 'package:ui/screens/edit_radio.dart';
 import 'package:ui/screens/main_screen.dart';
 import 'package:ui/screens/new_radio.dart';
 import 'package:ui/theme/ui_theme.dart';
@@ -13,7 +14,6 @@ void main() {
   AtEnv.load();
   runApp(const MyApp());
 }
-
 
 Future<AtClientPreference> loadAtClientPreference() async {
   var dir = await path_provider.getApplicationSupportDirectory();
@@ -25,7 +25,6 @@ Future<AtClientPreference> loadAtClientPreference() async {
         ..isLocalStoreRequired = true
       // TODO set the rest of your AtClientPreference here
       ;
-    
 }
 
 class MyApp extends StatefulWidget {
@@ -50,7 +49,8 @@ class _MyAppState extends State<MyApp> {
       routes: {
         HomeScreen.id: (_) => const HomeScreen(),
         MainScreen.id: (_) => const MainScreen(),
-        NewRadio.id: (_) => const NewRadio()
+        NewRadio.id: (_) => const NewRadio(),
+        //EditRadio.id: (_) => const EditRadio(),
       },
       initialRoute: HomeScreen.id,
     );

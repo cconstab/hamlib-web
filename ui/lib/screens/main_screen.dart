@@ -6,6 +6,7 @@ import 'package:at_client_mobile/at_client_mobile.dart';
 import 'package:ui/main.dart';
 
 import 'package:ui/screens/new_radio.dart';
+import 'package:ui/screens/edit_radio.dart';
 import 'package:ui/models/radio_model.dart';
 import 'package:ui/theme/ui_theme.dart';
 import 'package:ui/widgets/radio_card.dart';
@@ -24,7 +25,6 @@ class _MainScreenState extends State<MainScreen> {
   late AtClient atClient;
   late AtClientManager atClientManager;
   List radios = [];
-
 
   @override
   void initState() {
@@ -89,6 +89,22 @@ class _MainScreenState extends State<MainScreen> {
                     deleteradio: () {
                       setState(() {
                         radios.remove(hamradio);
+                      });
+                    },
+                    editradio: () {
+                      setState(() {
+                        HamRadio a = radios[radios.indexOf(hamradio)];
+                        var b = radios.indexOf(hamradio);
+                        print(a.toString());
+                        print(b);
+                        
+                        hamradio = Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EditRadio(
+                                  edithamradio: a ),
+                        ));
+                        radios[b] = hamradio;
                       });
                     },
                     activeradio: (newvalue) {

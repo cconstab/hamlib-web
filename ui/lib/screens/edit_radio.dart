@@ -6,19 +6,23 @@ import 'package:ui/theme/ui_theme.dart';
 import 'package:ui/models/radio_model.dart';
 import 'package:ui/forms/radioforms.dart';
 
-class NewRadio extends StatefulWidget {
-  const NewRadio({Key? key}) : super(key: key);
-  static const String id = '/newradio';
+class EditRadio extends StatefulWidget {
+  HamRadio edithamradio;
+
+  EditRadio({Key? key, required this.edithamradio}) : super(key: key);
+  static const String id = '/editradio';
 
   @override
-  _NewRadioState createState() => _NewRadioState();
+  _EditRadioState createState() => _EditRadioState();
 }
 
-class _NewRadioState extends State<NewRadio> {
+class _EditRadioState extends State<EditRadio> {
   final _formKey = GlobalKey<FormBuilderState>();
 
   @override
   Widget build(BuildContext context) {
+    HamRadio edithamradio = widget.edithamradio;
+
     return MaterialApp(
         home: Scaffold(
             backgroundColor: UItheme.richBlackFOGRA29,
@@ -34,9 +38,9 @@ class _NewRadioState extends State<NewRadio> {
             body: FormBuilder(
                 key: _formKey,
                 child: Column(children: [
-                  radioNameForm(context, ''),
-                  radioFormIP(context, ''),
-                  radioFormPort(context,''),
+                  radioNameForm(context, edithamradio.radioName),
+                  radioFormIP(context, edithamradio.ipAddress),
+                  radioFormPort(context, edithamradio.portNumber),
                   Row(
                     children: <Widget>[
                       const SizedBox(width: 20),
@@ -84,5 +88,3 @@ class _NewRadioState extends State<NewRadio> {
                 ]))));
   }
 }
-
-

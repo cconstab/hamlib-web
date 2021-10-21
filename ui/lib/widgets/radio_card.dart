@@ -6,9 +6,10 @@ import 'package:ui/models/radio_model.dart';
 class RadioCard extends StatefulWidget {
   final HamRadio hamradio;
   final VoidCallback? deleteradio;
+  final VoidCallback? editradio;
   final Function activeradio;
 
-  const RadioCard({Key? key, required this.hamradio, required this.deleteradio, required this.activeradio})
+  const RadioCard({Key? key, required this.hamradio, required this.deleteradio, required this.editradio, required this.activeradio})
       : super(key: key);
 
   @override
@@ -21,6 +22,7 @@ class _RadioCardState extends State<RadioCard> {
   Widget build(BuildContext context) {
     HamRadio radio = widget.hamradio;
     VoidCallback? deletecard = widget.deleteradio;
+    VoidCallback? editcard = widget.editradio;
     Function activeradio = widget.activeradio;
 
     return ExpansionTileCard(
@@ -101,7 +103,7 @@ class _RadioCardState extends State<RadioCard> {
                   )),
               const Spacer(),
               TextButton.icon(
-                  onPressed: deletecard,
+                  onPressed: editcard,
                   icon: const Icon(Icons.edit, color: Colors.white),
                   label: const Text(
                     'EDIT',
