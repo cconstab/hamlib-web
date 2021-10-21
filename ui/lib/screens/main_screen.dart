@@ -87,15 +87,18 @@ class _MainScreenState extends State<MainScreen> {
                     },
                     editradio: () async {
                         HamRadio edithamradio = radios[radios.indexOf(hamradio)];
-                        var editedhamradio =  await Navigator.push(
+                        HamRadio? editedhamradio =  await Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => EditRadio(edithamradio: edithamradio),
                             ));
+                              if(editedhamradio != null){
+                                  radios.remove(hamradio);
+                                  radios.insert(0,editedhamradio);
+                                  }
 
                       setState((){
-                        radios.remove(hamradio);
-                        radios.add(editedhamradio);
+
                       });
                     },
                     activeradio: (newvalue) {
