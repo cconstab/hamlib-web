@@ -9,7 +9,12 @@ class RadioCard extends StatefulWidget {
   final VoidCallback? editradio;
   final Function activeradio;
 
-  const RadioCard({Key? key, required this.hamradio, required this.deleteradio, required this.editradio, required this.activeradio})
+  const RadioCard(
+      {Key? key,
+      required this.hamradio,
+      required this.deleteradio,
+      required this.editradio,
+      required this.activeradio})
       : super(key: key);
 
   @override
@@ -26,7 +31,6 @@ class _RadioCardState extends State<RadioCard> {
     Function activeradio = widget.activeradio;
 
     return ExpansionTileCard(
-
         baseColor: UItheme.richBlackFOGRA29,
         expandedColor: UItheme.richBlackFOGRA29,
         expandedTextColor: Colors.white,
@@ -34,25 +38,34 @@ class _RadioCardState extends State<RadioCard> {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text('${radio.radioName}',
+            Text(radio.radioName,
                 style:
                     // ignore: prefer_const_constructors
                     TextStyle(
-                        fontFamily: 'LED', fontSize: 30, letterSpacing: 5,color: Colors.green)),
+                        fontFamily: 'LED',
+                        fontSize: 30,
+                        letterSpacing: 5,
+                        color: Colors.green)),
             // ignore: prefer_const_constructors
             Text(
                 "VFO A ${radio.vfoaFrequency.toString().padRight(10)} ${radio.vfoaModulationMode}",
                 style:
                     // ignore: prefer_const_constructors
                     TextStyle(
-                        fontFamily: 'LED', fontSize: 30, letterSpacing: 5,color: Colors.white)),
+                        fontFamily: 'LED',
+                        fontSize: 30,
+                        letterSpacing: 5,
+                        color: Colors.white)),
             // ignore: prefer_const_constructors
             Text(
                 "VFO B ${radio.vfobFrequency.toString().padRight(10)} ${radio.vfobModulationMode}",
                 style:
                     // ignore: prefer_const_constructors
                     TextStyle(
-                        fontFamily: 'LED', fontSize: 30, letterSpacing: 5,color: Colors.white)),
+                        fontFamily: 'LED',
+                        fontSize: 30,
+                        letterSpacing: 5,
+                        color: Colors.white)),
           ],
         ),
         children: <Widget>[
@@ -103,18 +116,18 @@ class _RadioCardState extends State<RadioCard> {
                   )),
               const Spacer(),
               TextButton.icon(
-                  onPressed: editcard,
-                  icon: const Icon(Icons.edit, color: Colors.white),
-                  label: const Text(
-                    'EDIT',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        fontFamily: 'LED',
-                        letterSpacing: 5),
-                  ),
-                  ),
-                  const Spacer(),
+                onPressed: editcard,
+                icon: const Icon(Icons.edit, color: Colors.white),
+                label: const Text(
+                  'EDIT',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontFamily: 'LED',
+                      letterSpacing: 5),
+                ),
+              ),
+              const Spacer(),
             ]),
             Theme(
                 data: ThemeData(unselectedWidgetColor: Colors.white),
@@ -123,7 +136,6 @@ class _RadioCardState extends State<RadioCard> {
                   controlAffinity: ListTileControlAffinity.leading,
                   onChanged: (newValue) {
                     setState(() {
-                      print('hello');
                       activeradio.call(newValue);
                     });
                   },
@@ -140,8 +152,10 @@ class _RadioCardState extends State<RadioCard> {
                         fontFamily: 'LED',
                         letterSpacing: 5),
                   ),
-                ))
+                )
+                )
           ])
-        ]);
+        ]
+        );
   }
 }
