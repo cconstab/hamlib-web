@@ -15,6 +15,7 @@ void main() {
   runApp(const MyApp());
 }
 
+
 Future<AtClientPreference> loadAtClientPreference() async {
   var dir = await path_provider.getApplicationSupportDirectory();
   return AtClientPreference()
