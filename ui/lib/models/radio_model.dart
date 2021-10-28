@@ -15,12 +15,12 @@ class HamRadio {
       {
       required this.radioName,
       this.active = false,
-      this.vfoaFrequency = '0.000.00',
+      this.vfoaFrequency = '',
       this.vfoaModulationMode = '---',
-      this.vfoaOperatingMode = '----',
-      this.vfobFrequency = '0.000.00',
+      this.vfoaOperatingMode = '---',
+      this.vfobFrequency = '',
       this.vfobModulationMode = '---',
-      this.vfobOperatingMode = '----',
+      this.vfobOperatingMode = '---',
       required this.ipAddress,
       required this.portNumber
       }
@@ -30,12 +30,12 @@ class HamRadio {
       {
       required this.radioName,
       required this.active,
-      this.vfoaFrequency = '0.000.00',
+      this.vfoaFrequency = '',
       this.vfoaModulationMode = '---',
-      this.vfoaOperatingMode = '----',
-      this.vfobFrequency = '0.000.00',
+      this.vfoaOperatingMode = '---',
+      this.vfobFrequency = '',
       this.vfobModulationMode = '---',
-      this.vfobOperatingMode = '----',
+      this.vfobOperatingMode = '---',
       required this.ipAddress,
       required this.portNumber
       }

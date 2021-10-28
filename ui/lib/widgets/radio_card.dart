@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:ui/Theme/ui_theme.dart';
 import 'package:ui/models/radio_model.dart';
+import 'package:ui/services/formats.dart';
 
 class RadioCard extends StatefulWidget {
   final HamRadio hamradio;
@@ -48,7 +49,7 @@ class _RadioCardState extends State<RadioCard> {
                         color: Colors.green)),
             // ignore: prefer_const_constructors
             Text(
-                "VFO A ${radio.vfoaFrequency.toString().padRight(10)} ${radio.vfoaModulationMode}",
+                "VFO A ${frequencyFormat(radio.vfoaFrequency.toString()).padRight(10)} ${radio.vfoaModulationMode}",
                 style:
                     // ignore: prefer_const_constructors
                     TextStyle(
@@ -58,7 +59,7 @@ class _RadioCardState extends State<RadioCard> {
                         color: Colors.white)),
             // ignore: prefer_const_constructors
             Text(
-                "VFO B ${radio.vfobFrequency.toString().padRight(10)} ${radio.vfobModulationMode}",
+                "VFO B ${frequencyFormat(radio.vfobFrequency.toString()).padRight(10)} ${radio.vfobModulationMode}",
                 style:
                     // ignore: prefer_const_constructors
                     TextStyle(
@@ -152,10 +153,8 @@ class _RadioCardState extends State<RadioCard> {
                         fontFamily: 'LED',
                         letterSpacing: 5),
                   ),
-                )
-                )
+                ))
           ])
-        ]
-        );
+        ]);
   }
 }
