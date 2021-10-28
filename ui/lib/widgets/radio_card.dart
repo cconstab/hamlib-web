@@ -3,6 +3,7 @@ import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:ui/Theme/ui_theme.dart';
 import 'package:ui/models/radio_model.dart';
 import 'package:ui/services/formats.dart';
+import 'package:ui/services/rigctld.dart';
 
 class RadioCard extends StatefulWidget {
   final HamRadio hamradio;
@@ -24,12 +25,16 @@ class RadioCard extends StatefulWidget {
 
 class _RadioCardState extends State<RadioCard> {
   _RadioCardState();
+
+ 
+
   @override
   Widget build(BuildContext context) {
     HamRadio radio = widget.hamradio;
     VoidCallback? deletecard = widget.deleteradio;
     VoidCallback? editcard = widget.editradio;
     Function activeradio = widget.activeradio;
+    rigCTLd(widget.hamradio);
 
     return ExpansionTileCard(
         baseColor: UItheme.richBlackFOGRA29,
