@@ -41,15 +41,17 @@ class _RadioCardState extends State<RadioCard> {
     VoidCallback? editcard = widget.editradio;
     Function activeradio = widget.activeradio;
     rigCTLd(widget.hamradio);
-    return TimerBuilder.periodic(const Duration(milliseconds: 500),
+    return TimerBuilder.periodic(const Duration(milliseconds: 1000),
         builder: (context) {
-    // If the ham radio is active then lets get the 
-    // frequency and modes... If not then set default.
+      // If the ham radio is active then lets get the
+      // frequency and modes... If not then set default.
       if (widget.hamradio.active) {
         rigCTLd(widget.hamradio);
       } else {
         widget.hamradio.vfoaFrequency = '';
+        widget.hamradio.vfoaModulationMode = '';
         widget.hamradio.vfobFrequency = '';
+        widget.hamradio.vfobModulationMode = '';
       }
       return ExpansionTileCard(
           baseColor: UItheme.richBlackFOGRA29,
