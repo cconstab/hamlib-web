@@ -19,7 +19,7 @@ class OnboardingDialog extends StatefulWidget {
 class _OnboardingDialogState extends State<OnboardingDialog> {
   final KeyChainManager _keyChainManager = KeyChainManager.getInstance();
   List<String> _atSignsList = [];
-   String ?_atsign;
+  String? _atsign;
 
   @override
   void initState() {
@@ -36,12 +36,12 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
       });
     } else {
       setState(() {
-        _atSignsList = atSignsList!;
+        if (atSignsList != null) {
+          _atSignsList = atSignsList;
+        }
       });
     }
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -65,15 +65,15 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
               dropdownColor: UItheme.secondaryColor,
               value: _atsign,
               style: const TextStyle(
-                          fontFamily: 'LED',
-                          fontSize: 30,
-                          letterSpacing: 5,
-                          color: Colors.white),
-            items: _atSignsList
-                  .map((atsign) =>
-                      DropdownMenuItem(child: Text(atsign.toUpperCase()), value: atsign))
+                  fontFamily: 'LED',
+                  fontSize: 30,
+                  letterSpacing: 5,
+                  color: Colors.white),
+              items: _atSignsList
+                  .map((atsign) => DropdownMenuItem(
+                      child: Text(atsign.toUpperCase()), value: atsign))
                   .toList(),
-              onChanged: (String ?value) {
+              onChanged: (String? value) {
                 if (value != null) {
                   setState(() {
                     _atsign = value;
@@ -100,11 +100,11 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
       style: ElevatedButton.styleFrom(
         primary: UItheme.middleBlueGreen,
         onPrimary: UItheme.richBlackFOGRA29,
-        textStyle:  const TextStyle(
-                          fontFamily: 'LED',
-                          fontSize: 30,
-                          letterSpacing: 5,
-                          color: Colors.white),
+        textStyle: const TextStyle(
+            fontFamily: 'LED',
+            fontSize: 30,
+            letterSpacing: 5,
+            color: Colors.white),
       ),
       onPressed: () async {
         var preference = await loadAtClientPreference();
@@ -116,8 +116,7 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
           rootEnvironment: AtEnv.rootEnvironment,
           appAPIKey: AtEnv.appApiKey,
           onboard: (value, atsign) {
-            if ((atsign != null) &&
-                !(_atSignsList.contains(atsign))) {
+            if ((atsign != null) && !(_atSignsList.contains(atsign))) {
               setState(() {
                 _atSignsList;
                 _atSignsList.add(atsign);
@@ -162,14 +161,16 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
             _showResetDialog(context, false);
           },
           style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(UItheme.viridianGreen)),
+              backgroundColor:
+                  MaterialStateProperty.all(UItheme.viridianGreen)),
           child: const Text(
             "RESET @SIGNS",
-            style: TextStyle(color: UItheme.richBlackFOGRA29,
-                          fontFamily: 'LED',
-                          fontSize: 30,
-                          letterSpacing: 5,
-                          ),
+            style: TextStyle(
+              color: UItheme.richBlackFOGRA29,
+              fontFamily: 'LED',
+              fontSize: 30,
+              letterSpacing: 5,
+            ),
           ),
         ),
       ],
@@ -183,10 +184,13 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
 
   Widget _resetAtsignDialog(BuildContext context) {
     return AlertDialog(
-      title: const Text("RESET YOUR @SIGNS", style: TextStyle(color: Colors.black, fontFamily: 'LED',
-                          fontSize: 30,
-                          letterSpacing: 5,
-                          )),
+      title: const Text("RESET YOUR @SIGNS",
+          style: TextStyle(
+            color: Colors.black,
+            fontFamily: 'LED',
+            fontSize: 30,
+            letterSpacing: 5,
+          )),
       content: SizedBox(
         height: 360,
         width: 240,
@@ -197,10 +201,13 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
             itemBuilder: (BuildContext context, int index) {
               return Row(
                 children: [
-                  Text(_atSignsList[index].toUpperCase(),style: const TextStyle(color: Colors.black, fontFamily: 'LED',
-                          fontSize: 30,
-                          letterSpacing: 5,
-                          ) ),
+                  Text(_atSignsList[index].toUpperCase(),
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'LED',
+                        fontSize: 30,
+                        letterSpacing: 5,
+                      )),
                   Expanded(
                     child: Container(),
                   ),
@@ -208,11 +215,13 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.red),
                     ),
-                    child: const Text("RESET", style: TextStyle(color: Colors.white, fontFamily: 'LED',
+                    child: const Text("RESET",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'LED',
                           fontSize: 30,
                           letterSpacing: 5,
-                          )
-                          ),
+                        )),
                     onPressed: () => _resetAtSign(_atSignsList[index]),
                   )
                 ],
@@ -223,10 +232,13 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
       ),
       actions: [
         TextButton(
-          child: const Text('CANCEL', style: TextStyle(color: Colors.blue, fontFamily: 'LED',
-                          fontSize: 30,
-                          letterSpacing: 5,
-                          )),
+          child: const Text('CANCEL',
+              style: TextStyle(
+                color: Colors.blue,
+                fontFamily: 'LED',
+                fontSize: 30,
+                letterSpacing: 5,
+              )),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -263,8 +275,8 @@ class _OnboardingDialogState extends State<OnboardingDialog> {
                     _atsign = null;
                   }
                   if (_atSignsList.length > 1 && _atsign == atsign) {
-                    _atsign = _atSignsList
-                        .firstWhere((element) => element != atsign);
+                    _atsign =
+                        _atSignsList.firstWhere((element) => element != atsign);
                   }
                   _atSignsList.remove(atsign);
                 });
