@@ -48,6 +48,8 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+            debugShowCheckedModeBanner: false,
+
       home: Scaffold(
           floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
           backgroundColor: UItheme.richBlackFOGRA29,
@@ -60,8 +62,9 @@ class _MainScreenState extends State<MainScreen> {
             
             actions:  [
       PopupMenuButton<String>(   
-        color:UItheme.viridianGreen,   
-        icon: const Icon(Icons.filter_list),
+        color:UItheme.viridianGreen,
+        padding: const EdgeInsets.symmetric(horizontal: 40),   
+        icon: const Icon(Icons.menu, size: 50,),
         onSelected: (String result) {
           switch (result) {
             case 'SAVE':
