@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 import 'package:at_client_mobile/at_client_mobile.dart';
+import 'package:ui/Theme/ui_theme.dart';
 
 import 'package:ui/screens/new_radio.dart';
 import 'package:ui/screens/edit_radio.dart';
 import 'package:ui/models/radio_model.dart';
-import 'package:ui/theme/ui_theme.dart';
 import 'package:ui/widgets/radio_card.dart';
 
 // Saves some typing if you need some radios
@@ -57,18 +57,34 @@ class _MainScreenState extends State<MainScreen> {
             title: Text(
               '$currentAtsign UI',
             ),
+            
             actions:  [
-              IconButton(
-                onPressed: (){
-                  setState(() {
-                     print('pressed icon');
-                  });
-                 
-                }, 
-                icon: const Icon(Icons.menu),
-              )
+      PopupMenuButton<String>(   
+        color:UItheme.viridianGreen,   
+        icon: const Icon(Icons.filter_list),
+        onSelected: (String result) {
+          switch (result) {
+            case 'SAVE':
+              print('SAVED');
+              break;
+            default:
+          }
+        },
+        itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                  const PopupMenuItem<String>(
+                    value: 'SAVE',
+                    child: Text('SAVE',style: TextStyle( fontFamily: 'LED',
+                  fontSize: 30,
+                  letterSpacing: 5,
+                  backgroundColor: UItheme.viridianGreen,
+                  color: Colors.white),
+                  ),
+                  )
+                ],
+              ),
             ],
             backgroundColor: UItheme.viridianGreen,
+            foregroundColor: Colors.white,
           ),
           floatingActionButton: FloatingActionButton(
             backgroundColor: UItheme.viridianGreen,
@@ -105,7 +121,7 @@ class _MainScreenState extends State<MainScreen> {
                           ));
                       if (editedhamradio != null) {
                         radios.remove(hamradio);
-                        editedhamradio.vfoaSet('140000000', 'USB');
+                        editedhamradio.vfoaSet('', '');
                         radios.insert(0, editedhamradio);
                       }
 
