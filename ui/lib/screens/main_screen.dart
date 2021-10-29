@@ -57,6 +57,17 @@ class _MainScreenState extends State<MainScreen> {
             title: Text(
               '$currentAtsign UI',
             ),
+            actions:  [
+              IconButton(
+                onPressed: (){
+                  setState(() {
+                     print('pressed icon');
+                  });
+                 
+                }, 
+                icon: const Icon(Icons.menu),
+              )
+            ],
             backgroundColor: UItheme.viridianGreen,
           ),
           floatingActionButton: FloatingActionButton(
