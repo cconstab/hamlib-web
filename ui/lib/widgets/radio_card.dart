@@ -27,12 +27,6 @@ class RadioCard extends StatefulWidget {
 class _RadioCardState extends State<RadioCard> {
   _RadioCardState();
 
-  // @override
-  // void setState(VoidCallback fn) {
-  //   super.setState(fn);
-  //   if(widget.hamradio.active){
-  //       rigCTLd(widget.hamradio);
-  //   }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +34,6 @@ class _RadioCardState extends State<RadioCard> {
     VoidCallback? deletecard = widget.deleteradio;
     VoidCallback? editcard = widget.editradio;
     Function activeradio = widget.activeradio;
-    rigCTLd(widget.hamradio);
     return TimerBuilder.periodic(const Duration(milliseconds: 1000),
         builder: (context) {
       // If the ham radio is active then lets get the

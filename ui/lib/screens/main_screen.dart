@@ -7,6 +7,7 @@ import 'package:ui/screens/new_radio.dart';
 import 'package:ui/screens/edit_radio.dart';
 import 'package:ui/models/radio_model.dart';
 import 'package:ui/widgets/radio_card.dart';
+import 'package:ui/services/at_save_radio.dart';
 
 // Saves some typing if you need some radios
 // import 'package:ui/data/radios.dart';
@@ -23,7 +24,7 @@ class _MainScreenState extends State<MainScreen> {
   String? currentAtsign;
   late AtClient atClient;
   late AtClientManager atClientManager;
-  List radios = [];
+  List <HamRadio> radios = [];
 
   @override
   void initState() {
@@ -48,8 +49,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-            debugShowCheckedModeBanner: false,
-
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
           floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
           backgroundColor: UItheme.richBlackFOGRA29,
@@ -59,29 +59,35 @@ class _MainScreenState extends State<MainScreen> {
             title: Text(
               '$currentAtsign UI',
             ),
-            
-            actions:  [
-      PopupMenuButton<String>(   
-        color:UItheme.viridianGreen,
-        padding: const EdgeInsets.symmetric(horizontal: 40),   
-        icon: const Icon(Icons.menu, size: 50,),
-        onSelected: (String result) {
-          switch (result) {
-            case 'SAVE':
-              print('SAVED');
-              break;
-            default:
-          }
-        },
-        itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+            actions: [
+              PopupMenuButton<String>(
+                color: UItheme.viridianGreen,
+                padding: const EdgeInsets.symmetric(horizontal: 40),
+                icon: const Icon(
+                  Icons.menu,
+                  size: 50,
+                ),
+                onSelected: (String result) {
+                  switch (result) {
+                    case 'SAVE':
+                      saveHamradio(radios);
+                      print(radios);
+                      break;
+                    default:
+                  }
+                },
+                itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
                   const PopupMenuItem<String>(
                     value: 'SAVE',
-                    child: Text('SAVE',style: TextStyle( fontFamily: 'LED',
-                  fontSize: 30,
-                  letterSpacing: 5,
-                  backgroundColor: UItheme.viridianGreen,
-                  color: Colors.white),
-                  ),
+                    child: Text(
+                      'SAVE',
+                      style: TextStyle(
+                          fontFamily: 'LED',
+                          fontSize: 30,
+                          letterSpacing: 5,
+                          backgroundColor: UItheme.viridianGreen,
+                          color: Colors.white),
+                    ),
                   )
                 ],
               ),
@@ -134,8 +140,7 @@ class _MainScreenState extends State<MainScreen> {
                       setState(() {
                         hamradio.active = newvalue;
                       });
-                    }))
-                .toList(),
+                    })).toList(),
           )),
     );
   }
