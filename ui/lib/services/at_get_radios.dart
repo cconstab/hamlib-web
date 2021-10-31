@@ -2,10 +2,12 @@ import 'package:at_client_mobile/at_client_mobile.dart';
 import 'package:at_commons/at_commons.dart';
 import 'package:ui/models/radio_model.dart';
 
-Future<List> getHamradio(List<HamRadio> radios) async {
+Future<List<HamRadio>> getHamradio(List<HamRadio> radios) async {
   String? currentAtsign;
   late AtClient atClient;
   late AtClientManager atClientManager;
+
+  print('MADE IT TO METHOD');
 
   atClientManager = AtClientManager.getInstance();
   atClient = atClientManager.atClient;
@@ -17,12 +19,20 @@ Future<List> getHamradio(List<HamRadio> radios) async {
     ..sharedWith = currentAtsign;
 
   var atRadiocount = await atClient.get(key);
-  int radioCount = int.parse(atRadiocount.value);
+  print(atRadiocount.value);
+  var val = atRadiocount.value;
+  int radioCount = int.parse(val);
+  print(radioCount.toString());
 
   for (var i = 0; i < radioCount; i++) {
+    print(i.toString());
 
-
-    
+    var key = AtKey()
+      ..key = i.toString() + '.radio'
+      ..sharedWith = currentAtsign;
+    var value = await atClient.get(key);
+    HamRadio newradio = HamRadio.fromJsonBasic(value.value);
+    radios.add(newradio);
   }
 
   // Pull in radios from @platform

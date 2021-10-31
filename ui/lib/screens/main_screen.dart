@@ -8,6 +8,7 @@ import 'package:ui/screens/edit_radio.dart';
 import 'package:ui/models/radio_model.dart';
 import 'package:ui/widgets/radio_card.dart';
 import 'package:ui/services/at_save_radio.dart';
+import 'package:ui/services/at_get_radios.dart';
 
 // Saves some typing if you need some radios
 // import 'package:ui/data/radios.dart';
@@ -24,7 +25,7 @@ class _MainScreenState extends State<MainScreen> {
   String? currentAtsign;
   late AtClient atClient;
   late AtClientManager atClientManager;
-  List <HamRadio> radios = [];
+  List<HamRadio> radios = [];
 
   @override
   void initState() {
@@ -33,6 +34,7 @@ class _MainScreenState extends State<MainScreen> {
     atClient = atClientManager.atClient;
     currentAtsign = atClient.getCurrentAtSign();
     currentAtsign = currentAtsign!.toUpperCase();
+    initRadios();
   }
 
   @override
@@ -44,6 +46,11 @@ class _MainScreenState extends State<MainScreen> {
       }
       return -1;
     });
+  }
+
+  Future<void> initRadios() async {
+    print('GETTING RADIOS');
+    radios = await getHamradio(radios);
   }
 
   @override
@@ -140,7 +147,8 @@ class _MainScreenState extends State<MainScreen> {
                       setState(() {
                         hamradio.active = newvalue;
                       });
-                    })).toList(),
+                    }))
+                .toList(),
           )),
     );
   }

@@ -20,9 +20,12 @@ void saveHamradio(List<HamRadio> radios) async {
 
   await atClient.put(key, radios.length.toString());
 
-// Cylce throug radios and save them in 
+  var blob = await atClient.get(key);
+  print(blob.value);
+
+// Cylce throug radios and save them in
 // .radio extended namespace
-// Only need to save Name, IP, Port 
+// Only need to save Name, IP, Port
 // The rest is dynamic
   radios.map((hamradio) async {
     var index = radios.indexOf(hamradio);
@@ -32,5 +35,4 @@ void saveHamradio(List<HamRadio> radios) async {
       ..sharedWith = currentAtsign;
     await atClient.put(key, hamradio.toJsonBasic().toString());
   }).toList();
-
 }
