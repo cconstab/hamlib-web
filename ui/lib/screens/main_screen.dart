@@ -51,6 +51,7 @@ class _MainScreenState extends State<MainScreen> {
   Future<void> initRadios() async {
     print('GETTING RADIOS');
     radios = await getHamradio(radios);
+    setState(() {});
   }
 
   @override

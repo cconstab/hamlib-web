@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:at_client_mobile/at_client_mobile.dart';
 import 'package:at_commons/at_commons.dart';
 import 'package:ui/models/radio_model.dart';
@@ -31,7 +33,10 @@ Future<List<HamRadio>> getHamradio(List<HamRadio> radios) async {
       ..key = i.toString() + '.radio'
       ..sharedWith = currentAtsign;
     var value = await atClient.get(key);
-    HamRadio newradio = HamRadio.fromJsonBasic(value.value);
+    String valueString = value.value;
+
+    var radioMap = jsonDecode(valueString);
+    var newradio = HamRadio.fromJsonBasic(radioMap);
     radios.add(newradio);
   }
 
