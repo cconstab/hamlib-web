@@ -47,6 +47,13 @@ class HamRadio {
         'portNumber': portNumber,
       };
 
+
+  Map<String, dynamic> toJsonBasic() => {
+        'radioName': radioName,
+        'ipAddress': ipAddress,
+        'portNumber': portNumber,
+      };
+
   factory HamRadio.fromJson(Map<String, dynamic> json) {
     return HamRadio(
       radioName: json['radioName'] as String,
@@ -57,6 +64,15 @@ class HamRadio {
       vfobFrequency: json['vfobFrequency'] as String,
       vfobModulationMode: json['vfobModulationMode'] as String,
       vfobOperatingMode: json['vfobOperatingMode'] as String,
+      ipAddress: json['ipAddress'] as String,
+      portNumber: json['PortNumber'] as String,
+    );
+  }
+
+
+    factory HamRadio.fromJsonBasic(Map<String, dynamic> json) {
+    return HamRadio(
+      radioName: json['radioName'] as String,
       ipAddress: json['ipAddress'] as String,
       portNumber: json['PortNumber'] as String,
     );
