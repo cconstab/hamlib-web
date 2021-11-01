@@ -3,59 +3,69 @@ import 'dart:typed_data';
 
 import 'package:ui/models/radio_model.dart';
 
-
 void rigCTLd(HamRadio hamradio) async {
- 
   String serverResponse = '';
 
   // connect to the socket server
-  final socket =
-      await Socket.connect(hamradio.ipAddress, int.parse(hamradio.portNumber));
+  try {
+    final socket = await Socket.connect(
+        hamradio.ipAddress,
+        int.parse(
+          hamradio.portNumber,
+        ),
+        timeout: const Duration(seconds: 5));
 
-  socket.listen(
-    // handle data from the server
-    (Uint8List data) {
-      serverResponse = String.fromCharCodes(data);
+    socket.listen(
+      // handle data from the server
+      (Uint8List data) {
+        serverResponse = String.fromCharCodes(data);
 
-      // Grab Frequency)
-      if (serverResponse.contains('get_freq:-Frequency:') &&
-          serverResponse.contains('-RPRT 0')) {
-        var freq = serverResponse.split(' ');
-        String frequency = freq[1];
-        frequency = frequency.replaceFirst(RegExp('r*-RPRT'), '');
-        hamradio.vfoaFrequency = frequency;
-      }
-      // Grab Modulation Mode
-      // Be aware sometimes the TCP packet
-      // Can include both Frequency and Modulation Mode
-      // Hence fancy RegExp!
-      if (serverResponse.contains('get_mode:-Mode:') &&
-          serverResponse.contains('Passband:')) {
-        String mode = serverResponse.replaceFirst(RegExp('((.|\n)*).+?(?=Mode)'), '');
-        List modelist = mode.split(' ');
-        String mmode = modelist[1];
-        mmode = mmode.replaceFirst(RegExp('r*-Passband:'), '');
-        // If no Modulation mode give then 
-        // Likley Digital or Dstar
-        if (mmode == '') {
-          mmode = 'DIG';
+        // Grab Frequency)
+        if (serverResponse.contains('get_freq:-Frequency:') &&
+            serverResponse.contains('-RPRT 0')) {
+          var freq = serverResponse.split(' ');
+          String frequency = freq[1];
+          frequency = frequency.replaceFirst(RegExp('r*-RPRT'), '');
+          hamradio.vfoaFrequency = frequency;
         }
-        hamradio.vfoaModulationMode = mmode;
-      }
-    },
+        // Grab Modulation Mode
+        // Be aware sometimes the TCP packet
+        // Can include both Frequency and Modulation Mode
+        // Hence fancy RegExp!
+        if (serverResponse.contains('get_mode:-Mode:') &&
+            serverResponse.contains('Passband:')) {
+          String mode =
+              serverResponse.replaceFirst(RegExp('((.|\n)*).+?(?=Mode)'), '');
+          List modelist = mode.split(' ');
+          String mmode = modelist[1];
+          mmode = mmode.replaceFirst(RegExp('r*-Passband:'), '');
+          // If no Modulation mode give then
+          // Likley Digital or Dstar
+          if (mmode == '') {
+            mmode = 'DIG';
+          }
+          hamradio.vfoaModulationMode = mmode;
+        }
+      },
 
-    // handle errors
-    onError: (error) {
-      socket.destroy();
-    },
+      // handle errors
+      onError: (error) {
+        hamradio.vfoaFrequency = "8888888888";
+        hamradio.vfoaModulationMode = 'ERR';
+        socket.destroy();
+      },
 
-    // handle server ending connection
-    onDone: () {
-      socket.destroy();
-    },
-  );
+      // handle server ending connection
+      onDone: () {
+        socket.destroy();
+      },
+    );
 
-  await sendMessage(socket, '-f -m\n');
+    await sendMessage(socket, '-f -m\n');
+  } on SocketException {
+    hamradio.vfoaFrequency = '8888888888';
+    hamradio.vfoaModulationMode = 'ERR';
+  }
 }
 
 Future<void> sendMessage(Socket socket, String message) async {

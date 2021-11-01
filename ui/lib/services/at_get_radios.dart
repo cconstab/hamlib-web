@@ -21,23 +21,25 @@ Future<List<HamRadio>> getHamradio(List<HamRadio> radios) async {
     ..sharedWith = currentAtsign;
 
   var atRadiocount = await atClient.get(key);
-  print(atRadiocount.value);
-  var val = atRadiocount.value;
-  int radioCount = int.parse(val);
-  print(radioCount.toString());
+  if (atRadiocount != 'null') {
+    print(atRadiocount.value);
+    var val = atRadiocount.value;
+    int radioCount = int.parse(val);
+    print(radioCount.toString());
 
-  for (var i = 0; i < radioCount; i++) {
-    print(i.toString());
+    for (var i = 0; i < radioCount; i++) {
+      print(i.toString());
 
-    var key = AtKey()
-      ..key = i.toString() + '.radio'
-      ..sharedWith = currentAtsign;
-    var value = await atClient.get(key);
-    String valueString = value.value;
+      var key = AtKey()
+        ..key = i.toString() + '.radio'
+        ..sharedWith = currentAtsign;
+      var value = await atClient.get(key);
+      String valueString = value.value;
 
-    var radioMap = jsonDecode(valueString);
-    var newradio = HamRadio.fromJsonBasic(radioMap);
-    radios.add(newradio);
+      var radioMap = jsonDecode(valueString);
+      var newradio = HamRadio.fromJsonBasic(radioMap);
+      radios.add(newradio);
+    }
   }
 
   // Pull in radios from @platform

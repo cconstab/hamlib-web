@@ -32,17 +32,17 @@ dependencies:
   font_awesome_flutter: ^9.1.0
   mdi: ^5.0.0-nullsafety.0
 
-dependency_overrides:  
-  at_onboarding_flutter:
-    git:
-      url: https://github.com/atsign-foundation/at_widgets.git
-      path: at_onboarding_flutter
-      ref: desktop/development
-  at_client_mobile:
-    git:
-      url: https://github.com/atsign-foundation/at_client_sdk.git
-      path: at_client_mobile
-      ref: desktop-compatible
+# dependency_overrides:  
+#   at_onboarding_flutter:
+#     git:
+#       url: https://github.com/atsign-foundation/at_widgets.git
+#       path: at_onboarding_flutter
+#       ref: desktop/development
+#   at_client_mobile:
+#     git:
+#       url: https://github.com/atsign-foundation/at_client_sdk.git
+#       path: at_client_mobile
+#       ref: desktop-compatible
 
 
 
