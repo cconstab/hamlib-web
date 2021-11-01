@@ -34,6 +34,9 @@ class _MainScreenState extends State<MainScreen> {
     atClient = atClientManager.atClient;
     currentAtsign = atClient.getCurrentAtSign();
     currentAtsign = currentAtsign!.toUpperCase();
+    var syncService = AtClientManager.getInstance().syncService;
+    syncService.setOnDone(_syncRadios);
+    print(syncService.isSyncInProgress);
     initRadios();
   }
 
@@ -46,6 +49,11 @@ class _MainScreenState extends State<MainScreen> {
       }
       return -1;
     });
+  }
+
+  void _syncRadios(synchResult) {
+    print('SYNC COMPLETE RUNNING initRADIOS');
+    initRadios();
   }
 
   Future<void> initRadios() async {

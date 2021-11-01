@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:at_client_mobile/at_client_mobile.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:at_app_flutter/at_app_flutter.dart';
-import 'package:ui/screens/edit_radio.dart';
 import 'package:ui/screens/main_screen.dart';
 import 'package:ui/screens/new_radio.dart';
 import 'package:ui/theme/ui_theme.dart';
@@ -24,6 +23,7 @@ Future<AtClientPreference> loadAtClientPreference() async {
         ..hiveStoragePath = dir.path
         ..commitLogPath = dir.path
         ..isLocalStoreRequired = true
+      // ignore: todo
       // TODO set the rest of your AtClientPreference here
       ;
 }

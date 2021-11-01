@@ -21,7 +21,8 @@ Future<List<HamRadio>> getHamradio(List<HamRadio> radios) async {
     ..sharedWith = currentAtsign;
 
   var atRadiocount = await atClient.get(key);
-  if (atRadiocount != 'null') {
+  if (atRadiocount.value != 'null') {
+    radios = [];
     print(atRadiocount.value);
     var val = atRadiocount.value;
     int radioCount = int.parse(val);
@@ -42,8 +43,5 @@ Future<List<HamRadio>> getHamradio(List<HamRadio> radios) async {
     }
   }
 
-  // Pull in radios from @platform
-  var keys = await atClient.getKeys(sharedWith: '@ai6bh');
-  print('keys' + keys.toString());
   return (radios);
 }
