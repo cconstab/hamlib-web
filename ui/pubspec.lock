@@ -30,20 +30,18 @@ packages:
     source: hosted
     version: "2.8.1"
   at_app_flutter:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       name: at_app_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "3.0.0"
   at_backupkey_flutter:
     dependency: transitive
     description:
-      path: at_backupkey_flutter
-      ref: "desktop/development"
-      resolved-ref: "617ebdf7001217dd8ca93462aa06ce848f6cc734"
-      url: "https://github.com/atsign-foundation/at_widgets.git"
-    source: git
+      name: at_backupkey_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "3.0.0"
   at_base2e15:
     dependency: transitive
@@ -55,20 +53,16 @@ packages:
   at_client:
     dependency: transitive
     description:
-      path: at_client
-      ref: desktop-compatible
-      resolved-ref: "7c0404d4c9f1530455227e2af72a17640a512f7b"
-      url: "https://github.com/atsign-foundation/at_client_sdk.git"
-    source: git
-    version: "3.0.3"
+      name: at_client
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.4"
   at_client_mobile:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: at_client_mobile
-      ref: desktop-compatible
-      resolved-ref: "7c0404d4c9f1530455227e2af72a17640a512f7b"
-      url: "https://github.com/atsign-foundation/at_client_sdk.git"
-    source: git
+      name: at_client_mobile
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "3.0.3"
   at_commons:
     dependency: transitive
@@ -85,14 +79,12 @@ packages:
     source: hosted
     version: "3.0.3"
   at_onboarding_flutter:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: at_onboarding_flutter
-      ref: "desktop/development"
-      resolved-ref: "617ebdf7001217dd8ca93462aa06ce848f6cc734"
-      url: "https://github.com/atsign-foundation/at_widgets.git"
-    source: git
-    version: "3.0.2"
+      name: at_onboarding_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.4"
   at_persistence_secondary_server:
     dependency: transitive
     description:
@@ -134,14 +126,7 @@ packages:
       name: auto_size_text
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0-nullsafety.0"
-  biometric_storage:
-    dependency: transitive
-    description:
-      name: biometric_storage
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.3"
+    version: "3.0.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -191,13 +176,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.2"
-  cross_file:
-    dependency: transitive
-    description:
-      name: cross_file
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.3.2"
   crypto:
     dependency: transitive
     description:
@@ -213,19 +191,12 @@ packages:
     source: hosted
     version: "2.0.3"
   cupertino_icons:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       name: cupertino_icons
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
-  dotenv:
-    dependency: transitive
-    description:
-      name: dotenv
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.0"
   encrypt:
     dependency: transitive
     description:
@@ -234,7 +205,7 @@ packages:
     source: hosted
     version: "5.0.1"
   expansion_tile_card:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       name: expansion_tile_card
       url: "https://pub.dartlang.org"
@@ -267,61 +238,33 @@ packages:
       name: file_picker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.1.4"
-  file_selector:
-    dependency: transitive
-    description:
-      name: file_selector
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.8.2+1"
-  file_selector_linux:
-    dependency: transitive
-    description:
-      name: file_selector_linux
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.2+1"
-  file_selector_macos:
-    dependency: transitive
-    description:
-      name: file_selector_macos
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.4+1"
-  file_selector_platform_interface:
-    dependency: transitive
-    description:
-      name: file_selector_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.2"
-  file_selector_web:
-    dependency: transitive
-    description:
-      name: file_selector_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.8.1+2"
-  file_selector_windows:
-    dependency: transitive
-    description:
-      name: file_selector_windows
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.2+1"
+    version: "4.2.0"
   flutter:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_config:
+    dependency: transitive
+    description:
+      name: flutter_config
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   flutter_form_builder:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       name: flutter_form_builder
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.1.0+1"
+    version: "6.2.0"
+  flutter_keychain:
+    dependency: transitive
+    description:
+      name: flutter_keychain
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -340,7 +283,7 @@ packages:
       name: flutter_plugin_android_lifecycle
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.3"
+    version: "2.0.4"
   flutter_qr_reader:
     dependency: transitive
     description:
@@ -364,7 +307,7 @@ packages:
       name: font_awesome_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "9.1.0"
+    version: "9.2.0"
   google_fonts:
     dependency: "direct main"
     description:
@@ -455,7 +398,7 @@ packages:
       name: mime
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.1"
   path:
     dependency: transitive
     description:
@@ -469,7 +412,7 @@ packages:
       name: path_provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.5"
+    version: "2.0.6"
   path_provider_linux:
     dependency: transitive
     description:
@@ -539,14 +482,14 @@ packages:
       name: pointycastle
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.3.4"
+    version: "3.3.5"
   process:
     dependency: transitive
     description:
       name: process
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.2.3"
+    version: "4.2.4"
   share:
     dependency: transitive
     description:
@@ -602,7 +545,7 @@ packages:
     source: hosted
     version: "0.4.2"
   timer_builder:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       name: timer_builder
       url: "https://pub.dartlang.org"
@@ -677,14 +620,14 @@ packages:
       name: webview_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.1"
+    version: "2.1.2"
   webview_flutter_android:
     dependency: transitive
     description:
       name: webview_flutter_android
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.15"
+    version: "2.1.0"
   webview_flutter_platform_interface:
     dependency: transitive
     description:
@@ -698,14 +641,14 @@ packages:
       name: webview_flutter_wkwebview
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.14"
+    version: "2.1.0"
   win32:
     dependency: transitive
     description:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.9"
+    version: "2.2.10"
   xdg_directories:
     dependency: transitive
     description:

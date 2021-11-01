@@ -21,12 +21,11 @@ Future<List<HamRadio>> getHamradio(List<HamRadio> radios) async {
     ..sharedWith = currentAtsign;
 
   var atRadiocount = await atClient.get(key);
-  if (atRadiocount.value != 'null') {
+  if (atRadiocount.value != null) {
     radios = [];
-    print(atRadiocount.value);
+    print('GET RADIO COUNT:' + atRadiocount.value);
     var val = atRadiocount.value;
     int radioCount = int.parse(val);
-    print(radioCount.toString());
 
     for (var i = 0; i < radioCount; i++) {
       print(i.toString());

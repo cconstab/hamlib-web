@@ -22,7 +22,7 @@ void saveHamradio(List<HamRadio> radios) async {
   await atClient.put(key, radios.length.toString());
 
   var blob = await atClient.get(key);
-  print(blob.value);
+  print('SAVING THIS MANY RADIOS:'+blob.value);
 
 // Cylce throug radios and save them in
 // .radio extended namespace
