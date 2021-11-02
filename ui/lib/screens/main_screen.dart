@@ -3,7 +3,6 @@ import 'package:mdi/mdi.dart';
 import 'package:at_client_mobile/at_client_mobile.dart';
 import 'package:ui/Theme/ui_theme.dart';
 
-
 import 'package:ui/screens/new_radio.dart';
 import 'package:ui/screens/edit_radio.dart';
 import 'package:ui/models/radio_model.dart';
@@ -61,9 +60,7 @@ class _MainScreenState extends State<MainScreen> {
   Future<void> initRadios() async {
     print('GETTING RADIOS');
     radios = await getHamradio(radios);
-    setState(() {
-      
-    });
+    setState(() {});
   }
 
   @override
@@ -163,6 +160,10 @@ class _MainScreenState extends State<MainScreen> {
                             activeradios.add(hamradio.radioUuid);
                           } else {
                             activeradios.remove(hamradio.radioUuid);
+                            hamradio.vfoaFrequency = '0000000000';
+                            hamradio.vfoaModulationMode = '---';
+                            hamradio.vfobFrequency = '0000000000';
+                            hamradio.vfobModulationMode = '---';                           
                           }
                         });
                       },
