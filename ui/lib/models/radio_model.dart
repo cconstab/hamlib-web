@@ -1,6 +1,6 @@
 class HamRadio {
   String radioName;
-  bool active;
+  String radioUuid;
   String? vfoaFrequency;
   String? vfoaModulationMode;
   String? vfoaOperatingMode;
@@ -12,11 +12,11 @@ class HamRadio {
 
   HamRadio(
       {required this.radioName,
-      this.active = false,
-      this.vfoaFrequency = '',
+      required this.radioUuid,
+      this.vfoaFrequency = '0000000000',
       this.vfoaModulationMode = '---',
       this.vfoaOperatingMode = '---',
-      this.vfobFrequency = '',
+      this.vfobFrequency = '0000000000',
       this.vfobModulationMode = '---',
       this.vfobOperatingMode = '---',
       required this.ipAddress,
@@ -24,26 +24,31 @@ class HamRadio {
 
   HamRadio.edited(
       {required this.radioName,
-      required this.active,
-      this.vfoaFrequency = '',
+      required this.radioUuid,
+      this.vfoaFrequency = '0000000000',
       this.vfoaModulationMode = '---',
       this.vfoaOperatingMode = '---',
-      this.vfobFrequency = '',
+      this.vfobFrequency = '0000000000',
       this.vfobModulationMode = '---',
       this.vfobOperatingMode = '---',
       required this.ipAddress,
       required this.portNumber});
- 
-  HamRadio.fromJsonBasic(Map<String, dynamic> json)  
-     : radioName = json['radioName'],
-      ipAddress = json['ipAddress'],
-      active = false,
-      portNumber = json['portNumber'];
 
+  HamRadio.fromJsonBasic(Map<String, dynamic> json)
+      : radioName = json['radioName'],
+        radioUuid = json['radioUuid'],
+        ipAddress = json['ipAddress'],
+        portNumber = json['portNumber'],
+        vfoaFrequency = '0000000000',
+        vfoaModulationMode = '---',
+        vfoaOperatingMode = '---',
+        vfobFrequency = '0000000000',
+        vfobModulationMode = '---',
+        vfobOperatingMode = '---';
 
   Map<String, dynamic> toJsonFull() => {
         'radioName': radioName,
-        'active': active,
+        'radioUuid': radioUuid,
         'vfoaFrequency': vfoaFrequency,
         'vfoaModulationMode': vfoaModulationMode,
         'vfoaOperatingMode': vfoaOperatingMode,
@@ -54,28 +59,12 @@ class HamRadio {
         'portNumber': portNumber,
       };
 
-
   Map<String, dynamic> toJson() => {
         'radioName': radioName,
+        'radioUuid': radioUuid,
         'ipAddress': ipAddress,
         'portNumber': portNumber,
       };
-
-  factory HamRadio.fromJson(Map<String, dynamic> json) {
-    return HamRadio(
-      radioName: json['radioName'] as String,
-      active: json['active'] as bool,
-      vfoaFrequency: json['vfoaFrequency'] as String,
-      vfoaModulationMode: json['vfoaModulationMode'] as String,
-      vfoaOperatingMode: json['vfoaOperatingMode'] as String,
-      vfobFrequency: json['vfobFrequency'] as String,
-      vfobModulationMode: json['vfobModulationMode'] as String,
-      vfobOperatingMode: json['vfobOperatingMode'] as String,
-      ipAddress: json['ipAddress'] as String,
-      portNumber: json['PortNumber'] as String,
-    );
-  }
- 
 
 
   void vfoaSet(String frequency, String mmode) {
@@ -83,10 +72,8 @@ class HamRadio {
     vfoaModulationMode = mmode;
   }
 
-    void vfobSet(String frequency, String mmode) {
+  void vfobSet(String frequency, String mmode) {
     vfobFrequency = frequency;
     vfobModulationMode = mmode;
   }
-
-
 }

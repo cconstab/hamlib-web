@@ -11,14 +11,16 @@ class RadioCard extends StatefulWidget {
   final VoidCallback? deleteradio;
   final VoidCallback? editradio;
   final Function activeradio;
+  final Function activateradio;
 
-  const RadioCard(
-      {Key? key,
-      required this.hamradio,
-      required this.deleteradio,
-      required this.editradio,
-      required this.activeradio})
-      : super(key: key);
+  const RadioCard({
+    Key? key,
+    required this.hamradio,
+    required this.deleteradio,
+    required this.editradio,
+    required this.activeradio,
+    required this.activateradio,
+  }) : super(key: key);
 
   @override
   _RadioCardState createState() => _RadioCardState();
@@ -27,18 +29,18 @@ class RadioCard extends StatefulWidget {
 class _RadioCardState extends State<RadioCard> {
   _RadioCardState();
 
-
   @override
   Widget build(BuildContext context) {
     HamRadio radio = widget.hamradio;
     VoidCallback? deletecard = widget.deleteradio;
     VoidCallback? editcard = widget.editradio;
     Function activeradio = widget.activeradio;
+    Function activateradio = widget.activateradio;
     return TimerBuilder.periodic(const Duration(milliseconds: 1000),
         builder: (context) {
       // If the ham radio is active then lets get the
       // frequency and modes... If not then set default.
-      if (widget.hamradio.active) {
+      if (widget.activeradio()) {
         rigCTLd(widget.hamradio);
       } else {
         widget.hamradio.vfoaFrequency = '';
@@ -148,11 +150,11 @@ class _RadioCardState extends State<RadioCard> {
               Theme(
                   data: ThemeData(unselectedWidgetColor: Colors.white),
                   child: CheckboxListTile(
-                    value: radio.active,
+                    value: widget.activeradio(),
                     controlAffinity: ListTileControlAffinity.leading,
                     onChanged: (newValue) {
                       setState(() {
-                        activeradio.call(newValue);
+                        activateradio.call(newValue);
                       });
                     },
                     activeColor: Colors.red,

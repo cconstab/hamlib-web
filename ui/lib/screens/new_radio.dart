@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 import 'package:ui/theme/ui_theme.dart';
@@ -62,6 +63,7 @@ class _NewRadioState extends State<NewRadio> {
                               // print(_formKey.currentState!.value);
                               var newradio = HamRadio(
                                   radioName: radioname,
+                                  radioUuid: UniqueKey().toString(),
                                   // active: false,
                                   // vfoaFrequency: 0,
                                   // vfoaModulationMode: '',

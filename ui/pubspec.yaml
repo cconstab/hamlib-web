@@ -57,6 +57,7 @@ dependencies:
   timer_builder: ^2.0.0
   expansion_tile_card: ^2.0.0
   flutter_form_builder: ^6.1.0+1
+  uuid: ^3.0.5
 
 dev_dependencies:
   flutter_test:

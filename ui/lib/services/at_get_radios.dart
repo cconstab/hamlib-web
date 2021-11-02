@@ -22,7 +22,8 @@ Future<List<HamRadio>> getHamradio(List<HamRadio> radios) async {
 
   var atRadiocount = await atClient.get(key);
   if (atRadiocount.value != null) {
-    radios = [];
+    // radios = [];
+    List<HamRadio> newradios = [];
     print('GET RADIO COUNT:' + atRadiocount.value);
     var val = atRadiocount.value;
     int radioCount = int.parse(val);
@@ -38,8 +39,9 @@ Future<List<HamRadio>> getHamradio(List<HamRadio> radios) async {
 
       var radioMap = jsonDecode(valueString);
       var newradio = HamRadio.fromJsonBasic(radioMap);
-      radios.add(newradio);
+      newradios.add(newradio);
     }
+    radios = newradios;
   }
 
   return (radios);

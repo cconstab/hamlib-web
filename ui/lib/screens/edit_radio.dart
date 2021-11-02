@@ -66,7 +66,7 @@ class _EditRadioState extends State<EditRadio> {
                               // print(_formKey.currentState!.value);
                               var newradio = HamRadio.edited(
                                   radioName: radioname,
-                                  active: edithamradio.active,
+                                  radioUuid: edithamradio.radioUuid,
                                   // vfoaFrequency: 0,
                                   // vfoaModulationMode: '',
                                   // vfoaOperatingMode: '',

@@ -1,4 +1,5 @@
 String frequencyFormat(String frequency) {
+  if (frequency == 'null') frequency = '0000000000';
   frequency = frequency.padLeft(10, '0');
   String formatFrequency = frequency;
   var len = frequency.length;
@@ -6,7 +7,7 @@ String frequencyFormat(String frequency) {
   String second = '';
   String third = '';
   if (len > 0) {
-    third = frequency.substring(len - 3, len-1);
+    third = frequency.substring(len - 3, len - 1);
   }
   if (len > 2) {
     second = frequency.substring(len - 6, len - 3);

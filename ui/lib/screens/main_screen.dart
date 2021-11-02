@@ -3,6 +3,7 @@ import 'package:mdi/mdi.dart';
 import 'package:at_client_mobile/at_client_mobile.dart';
 import 'package:ui/Theme/ui_theme.dart';
 
+
 import 'package:ui/screens/new_radio.dart';
 import 'package:ui/screens/edit_radio.dart';
 import 'package:ui/models/radio_model.dart';
@@ -26,6 +27,7 @@ class _MainScreenState extends State<MainScreen> {
   late AtClient atClient;
   late AtClientManager atClientManager;
   List<HamRadio> radios = [];
+  List activeradios = [];
 
   @override
   void initState() {
@@ -44,7 +46,7 @@ class _MainScreenState extends State<MainScreen> {
   void setState(VoidCallback fn) {
     super.setState(fn);
     radios.sort((a, b) {
-      if (b.active) {
+      if (activeradios.contains(b.radioUuid)) {
         return 1;
       }
       return -1;
@@ -59,7 +61,9 @@ class _MainScreenState extends State<MainScreen> {
   Future<void> initRadios() async {
     print('GETTING RADIOS');
     radios = await getHamradio(radios);
-    setState(() {});
+    setState(() {
+      
+    });
   }
 
   @override
@@ -129,34 +133,47 @@ class _MainScreenState extends State<MainScreen> {
           body: ListView(
             children: radios
                 .map((hamradio) => RadioCard(
-                    key: UniqueKey(),
-                    hamradio: hamradio,
-                    deleteradio: () {
-                      setState(() {
-                        radios.remove(hamradio);
-                      });
-                    },
-                    editradio: () async {
-                      HamRadio edithamradio = radios[radios.indexOf(hamradio)];
-                      HamRadio? editedhamradio = await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                EditRadio(edithamradio: edithamradio),
-                          ));
-                      if (editedhamradio != null) {
-                        radios.remove(hamradio);
-                        editedhamradio.vfoaSet('', '');
-                        radios.insert(0, editedhamradio);
-                      }
+                      key: UniqueKey(),
+                      hamradio: hamradio,
+                      deleteradio: () {
+                        setState(() {
+                          radios.remove(hamradio);
+                        });
+                      },
+                      editradio: () async {
+                        HamRadio edithamradio =
+                            radios[radios.indexOf(hamradio)];
+                        HamRadio? editedhamradio = await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  EditRadio(edithamradio: edithamradio),
+                            ));
+                        if (editedhamradio != null) {
+                          radios.remove(hamradio);
+                          editedhamradio.vfoaSet('', '');
+                          radios.insert(0, editedhamradio);
+                        }
 
-                      setState(() {});
-                    },
-                    activeradio: (newvalue) {
-                      setState(() {
-                        hamradio.active = newvalue;
-                      });
-                    }))
+                        setState(() {});
+                      },
+                      activateradio: (newvalue) {
+                        setState(() {
+                          if (newvalue) {
+                            activeradios.add(hamradio.radioUuid);
+                          } else {
+                            activeradios.remove(hamradio.radioUuid);
+                          }
+                        });
+                      },
+                      activeradio: () {
+                        if (activeradios.contains(hamradio.radioUuid)) {
+                          return true;
+                        } else {
+                          return false;
+                        }
+                      },
+                    ))
                 .toList(),
           )),
     );
