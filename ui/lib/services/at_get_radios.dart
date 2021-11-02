@@ -39,6 +39,7 @@ Future<List<HamRadio>> getHamradio(List<HamRadio> radios) async {
 
       var radioMap = jsonDecode(valueString);
       var newradio = HamRadio.fromJsonBasic(radioMap);
+      print(newradio.vfoaModulationMode.toString()+'<<<Mod Mode');
       newradios.add(newradio);
     }
     radios = newradios;

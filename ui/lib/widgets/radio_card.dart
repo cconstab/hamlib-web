@@ -36,18 +36,13 @@ class _RadioCardState extends State<RadioCard> {
     VoidCallback? editcard = widget.editradio;
     Function activeradio = widget.activeradio;
     Function activateradio = widget.activateradio;
-    return TimerBuilder.periodic(const Duration(milliseconds: 1000),
+    return TimerBuilder.periodic(const Duration(milliseconds: 500),
         builder: (context) {
       // If the ham radio is active then lets get the
       // frequency and modes... If not then set default.
-      if (widget.activeradio()) {
+      if (activeradio()) {
         rigCTLd(widget.hamradio);
-      } else {
-        widget.hamradio.vfoaFrequency = '';
-        widget.hamradio.vfoaModulationMode = '';
-        widget.hamradio.vfobFrequency = '';
-        widget.hamradio.vfobModulationMode = '';
-      }
+      } 
       return ExpansionTileCard(
           baseColor: UItheme.richBlackFOGRA29,
           expandedColor: UItheme.richBlackFOGRA29,
@@ -66,7 +61,7 @@ class _RadioCardState extends State<RadioCard> {
                           color: Colors.green)),
               // ignore: prefer_const_constructors
               Text(
-                  "VFO A ${frequencyFormat(radio.vfoaFrequency.toString()).padRight(10)} ${radio.vfoaModulationMode}",
+                  "VFO A ${frequencyFormat(radio.vfoaFrequency.toString()).padRight(10)} ${radio.vfoaModulationMode.toString()}",
                   style:
                       // ignore: prefer_const_constructors
                       TextStyle(
@@ -76,7 +71,7 @@ class _RadioCardState extends State<RadioCard> {
                           color: Colors.white)),
               // ignore: prefer_const_constructors
               Text(
-                  "VFO B ${frequencyFormat(radio.vfobFrequency.toString()).padRight(10)} ${radio.vfobModulationMode}",
+                  "VFO B ${frequencyFormat(radio.vfobFrequency.toString()).padRight(10)} ${radio.vfobModulationMode.toString()}",
                   style:
                       // ignore: prefer_const_constructors
                       TextStyle(
