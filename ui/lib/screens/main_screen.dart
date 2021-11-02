@@ -1,3 +1,4 @@
+import "package:collection/collection.dart";
 import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
 import 'package:at_client_mobile/at_client_mobile.dart';
@@ -35,15 +36,20 @@ class _MainScreenState extends State<MainScreen> {
     atClient = atClientManager.atClient;
     currentAtsign = atClient.getCurrentAtSign();
     currentAtsign = currentAtsign!.toUpperCase();
-    var syncService = AtClientManager.getInstance().syncService;
+    final syncService = atClientManager.syncService;
     syncService.setOnDone(_syncRadios);
-    print(syncService.isSyncInProgress);
+    print(syncService.isSyncInProgress.toString() + ' Syncing ');
     initRadios();
   }
 
   @override
   void setState(VoidCallback fn) {
     super.setState(fn);
+    radios.sort((a, b){
+      return compareAsciiUpperCase(a.radioName, b.radioName);
+    }
+
+    );
     radios.sort((a, b) {
       if (activeradios.contains(b.radioUuid)) {
         return 1;
@@ -122,6 +128,7 @@ class _MainScreenState extends State<MainScreen> {
               if (newradio != null) {
                 setState(() {
                   radios.add(newradio);
+                  saveHamradio(radios);
                 });
               }
             },
@@ -135,6 +142,7 @@ class _MainScreenState extends State<MainScreen> {
                       deleteradio: () {
                         setState(() {
                           radios.remove(hamradio);
+                          saveHamradio(radios);
                         });
                       },
                       editradio: () async {
@@ -148,8 +156,9 @@ class _MainScreenState extends State<MainScreen> {
                             ));
                         if (editedhamradio != null) {
                           radios.remove(hamradio);
-                          editedhamradio.vfoaSet('', '');
+                          editedhamradio.radioUuid = UniqueKey().toString();
                           radios.insert(0, editedhamradio);
+                          saveHamradio(radios);
                         }
 
                         setState(() {});
@@ -163,7 +172,7 @@ class _MainScreenState extends State<MainScreen> {
                             hamradio.vfoaFrequency = '0000000000';
                             hamradio.vfoaModulationMode = '---';
                             hamradio.vfobFrequency = '0000000000';
-                            hamradio.vfobModulationMode = '---';                           
+                            hamradio.vfobModulationMode = '---';
                           }
                         });
                       },

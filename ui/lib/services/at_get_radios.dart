@@ -22,12 +22,12 @@ Future<List<HamRadio>> getHamradio(List<HamRadio> radios) async {
 
   var atRadiocount = await atClient.get(key);
   if (atRadiocount.value != null) {
-    // radios = [];
     List<HamRadio> newradios = [];
     print('GET RADIO COUNT:' + atRadiocount.value);
     var val = atRadiocount.value;
     int radioCount = int.parse(val);
-
+    int existingRadioCount = radios.length;
+    bool found = false;
     for (var i = 0; i < radioCount; i++) {
       print(i.toString());
 
@@ -39,11 +39,52 @@ Future<List<HamRadio>> getHamradio(List<HamRadio> radios) async {
 
       var radioMap = jsonDecode(valueString);
       var newradio = HamRadio.fromJsonBasic(radioMap);
-      print(newradio.vfoaModulationMode.toString()+'<<<Mod Mode');
       newradios.add(newradio);
     }
-    radios = newradios;
-  }
+    if (radios == newradios) return radios;
 
+    if (radios.isEmpty) {
+      radios = newradios;
+    } else {
+      var oldLength = radios.length;
+      Map radioUuids = {};
+      for (var old = 0; old < oldLength; old++) {
+        radioUuids[old] = radios[old].radioUuid;
+      }
+
+      var newLength = newradios.length;
+      Map newRadioUuids = {};
+      for (var extra = 0; extra < newLength; extra++) {
+        newRadioUuids[extra] = newradios[extra].radioUuid;
+      }
+
+      newRadioUuids.forEach((key, value) {
+        if (radioUuids.containsValue(value)) {
+        } else {
+          radios.add(newradios[key]);
+          print('Adding :' + newradios[key].radioName.toString());
+        }
+      });
+
+      oldLength = radios.length;
+      List radiosToRemove = [];
+      radioUuids = {};
+      for (var old = 0; old < oldLength; old++) {
+        radioUuids[old] = radios[old].radioUuid;
+      }
+
+      radioUuids.forEach((key, value) {
+        if (newRadioUuids.containsValue(value)) {
+          print('NOT Removing :' + radios[key].radioName.toString());
+        } else {
+          radiosToRemove.add(key);
+          print('Removing :' + radios[key].radioName.toString());
+        }
+      });
+      for (var key in radiosToRemove) {
+        radios.remove(radios[key]);
+      }
+    }
+  }
   return (radios);
 }
