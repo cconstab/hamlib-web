@@ -46,6 +46,7 @@ void rigCTLd(HamRadio hamradio) async {
           }
           hamradio.vfoaModulationMode = mmode;
         }
+        hamradio.errors = 0;
       },
 
       // handle errors
@@ -62,13 +63,16 @@ void rigCTLd(HamRadio hamradio) async {
     );
 
     await sendMessage(socket, '-f\r-m\r');
-  // } on SocketException {
-  //   hamradio.vfoaFrequency = '8888888888';
-  //   hamradio.vfoaModulationMode = 'ERR';
+    // } on SocketException {
+    //   hamradio.vfoaFrequency = '8888888888';
+    //   hamradio.vfoaModulationMode = 'ERR';
   } catch (e) {
-    print(e.toString());
-        hamradio.vfoaFrequency = "8888888888";
-        hamradio.vfoaModulationMode = 'ERR';
+    hamradio.errors++;
+    print(e.toString()+'errors:'+hamradio.errors.toString());
+    if (hamradio.errors > 4) {
+      hamradio.vfoaFrequency = "8888888888";
+      hamradio.vfoaModulationMode = 'ERR';
+    }
   }
 }
 
