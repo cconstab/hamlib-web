@@ -13,7 +13,7 @@ void rigCTLd(HamRadio hamradio) async {
         int.parse(
           hamradio.portNumber,
         ),
-        timeout: const Duration(seconds: 1));
+        timeout: const Duration(seconds: 3));
 
     socket.listen(
       // handle data from the server
@@ -57,19 +57,23 @@ void rigCTLd(HamRadio hamradio) async {
 
       // handle server ending connection
       onDone: () {
-        socket.destroy();
+        socket.close();
       },
     );
 
     await sendMessage(socket, '-f\r-m\r');
-  } on SocketException {
-    // hamradio.vfoaFrequency = '8888888888';
-    // hamradio.vfoaModulationMode = 'ERR';
+  // } on SocketException {
+  //   hamradio.vfoaFrequency = '8888888888';
+  //   hamradio.vfoaModulationMode = 'ERR';
+  } catch (e) {
+    print(e.toString());
+        hamradio.vfoaFrequency = "8888888888";
+        hamradio.vfoaModulationMode = 'ERR';
   }
 }
 
 Future<void> sendMessage(Socket socket, String message) async {
   socket.write(message);
-  await Future.delayed(const Duration(seconds: 2));
-  socket.destroy();
+  await Future.delayed(const Duration(seconds: 1));
+  socket.close();
 }

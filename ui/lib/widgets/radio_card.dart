@@ -36,7 +36,7 @@ class _RadioCardState extends State<RadioCard> {
     VoidCallback? editcard = widget.editradio;
     Function activeradio = widget.activeradio;
     Function activateradio = widget.activateradio;
-    return TimerBuilder.periodic(const Duration(milliseconds: 500),
+    return TimerBuilder.periodic(const Duration(milliseconds: 1000),
         builder: (context) {
       // If the ham radio is active then lets get the
       // frequency and modes... If not then set default.

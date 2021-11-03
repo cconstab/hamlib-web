@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import "package:collection/collection.dart";
 import 'package:flutter/material.dart';
 import 'package:mdi/mdi.dart';
@@ -7,6 +9,7 @@ import 'package:ui/Theme/ui_theme.dart';
 import 'package:ui/screens/new_radio.dart';
 import 'package:ui/screens/edit_radio.dart';
 import 'package:ui/models/radio_model.dart';
+import 'package:ui/services/reset_radio_display.dart';
 import 'package:ui/widgets/radio_card.dart';
 import 'package:ui/services/at_save_radio.dart';
 import 'package:ui/services/at_get_radios.dart';
@@ -45,11 +48,9 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void setState(VoidCallback fn) {
     super.setState(fn);
-    radios.sort((a, b){
+    radios.sort((a, b) {
       return compareAsciiUpperCase(a.radioName, b.radioName);
-    }
-
-    );
+    });
     radios.sort((a, b) {
       if (activeradios.contains(b.radioUuid)) {
         return 1;
@@ -92,18 +93,19 @@ class _MainScreenState extends State<MainScreen> {
                 ),
                 onSelected: (String result) {
                   switch (result) {
-                    case 'SAVE':
+                    case 'CLOSE':
                       saveHamradio(radios);
                       print(radios);
-                      break;
+                      exit(0);
+                    //break;
                     default:
                   }
                 },
                 itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
                   const PopupMenuItem<String>(
-                    value: 'SAVE',
+                    value: 'CLOSE',
                     child: Text(
-                      'SAVE',
+                      'CLOSE',
                       style: TextStyle(
                           fontFamily: 'LED',
                           fontSize: 30,
@@ -169,10 +171,7 @@ class _MainScreenState extends State<MainScreen> {
                             activeradios.add(hamradio.radioUuid);
                           } else {
                             activeradios.remove(hamradio.radioUuid);
-                            hamradio.vfoaFrequency = '0000000000';
-                            hamradio.vfoaModulationMode = '---';
-                            hamradio.vfobFrequency = '0000000000';
-                            hamradio.vfobModulationMode = '---';
+                            resetRadioDisplay(hamradio);
                           }
                         });
                       },
