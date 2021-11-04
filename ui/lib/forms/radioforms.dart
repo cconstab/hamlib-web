@@ -35,7 +35,7 @@ import 'package:ui/theme/ui_theme.dart';
                     initialValue: initialvalue,
                     name: 'ipAddress',
                     decoration: const InputDecoration(
-                      labelText: 'IP ADDRESS',
+                      labelText: 'IP/DNS ADDRESS',
                       fillColor: Colors.white,
                       focusColor: Colors.lightGreenAccent,
                       labelStyle: TextStyle(
@@ -43,8 +43,9 @@ import 'package:ui/theme/ui_theme.dart';
                       ),
                     ),
                     validator: FormBuilderValidators.compose([
-                      FormBuilderValidators.ip(context,
-                          errorText: 'Enter Valid IP'),
+                      FormBuilderValidators.url(context,
+                          errorText: 'Enter Valid Address'),
+                        
                       FormBuilderValidators.required(context),
                     ]),
                     style: const TextStyle(
@@ -69,7 +70,8 @@ import 'package:ui/theme/ui_theme.dart';
                     ),
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.maxLength(context, 16),
-                      FormBuilderValidators.minLength(context, 5),
+                      FormBuilderValidators.minLength(context, 4),
+                      FormBuilderValidators.match(context, '^[a-zA-Z0-9_.]*\$',errorText: 'Alphanumeric or _ Only'),
                       FormBuilderValidators.required(context)
                     ]),
                     style: const TextStyle(

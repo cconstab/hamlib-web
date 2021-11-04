@@ -26,8 +26,6 @@ Future<List<HamRadio>> getHamradio(List<HamRadio> radios) async {
     print('GET RADIO COUNT:' + atRadiocount.value);
     var val = atRadiocount.value;
     int radioCount = int.parse(val);
-    int existingRadioCount = radios.length;
-    bool found = false;
     for (var i = 0; i < radioCount; i++) {
       print(i.toString());
 

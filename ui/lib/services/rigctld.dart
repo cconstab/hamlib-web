@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:ui/models/radio_model.dart';
+import 'package:ui/services/update_atsign.dart';
 
 void rigCTLd(HamRadio hamradio) async {
   String serverResponse = '';
@@ -26,6 +27,7 @@ void rigCTLd(HamRadio hamradio) async {
           var freq = serverResponse.split(' ');
           String frequency = freq[1];
           frequency = frequency.replaceFirst(RegExp('r*-RPRT'), '');
+          hamradio.vfoaFrequencyLast = hamradio.vfoaFrequency;
           hamradio.vfoaFrequency = frequency;
         }
         // Grab Modulation Mode
@@ -44,8 +46,12 @@ void rigCTLd(HamRadio hamradio) async {
           if (mmode == '') {
             mmode = 'DIG';
           }
+          hamradio.vfoaModulationModeLast = hamradio.vfoaModulationMode;
           hamradio.vfoaModulationMode = mmode;
         }
+        if (hamradio.vfoaFrequency != hamradio.vfoaFrequencyLast || hamradio.vfoaModulationMode != hamradio.vfoaModulationModeLast ) {
+            updateAtsign(hamradio);
+          }
         hamradio.errors = 0;
       },
 
@@ -58,7 +64,7 @@ void rigCTLd(HamRadio hamradio) async {
 
       // handle server ending connection
       onDone: () {
-        socket.close();
+        socket.destroy();
       },
     );
 
@@ -68,7 +74,7 @@ void rigCTLd(HamRadio hamradio) async {
     //   hamradio.vfoaModulationMode = 'ERR';
   } catch (e) {
     hamradio.errors++;
-    print(e.toString()+'errors:'+hamradio.errors.toString());
+    print(e.toString() + 'errors:' + hamradio.errors.toString());
     if (hamradio.errors > 4) {
       hamradio.vfoaFrequency = "8888888888";
       hamradio.vfoaModulationMode = 'ERR';
@@ -79,5 +85,5 @@ void rigCTLd(HamRadio hamradio) async {
 Future<void> sendMessage(Socket socket, String message) async {
   socket.write(message);
   await Future.delayed(const Duration(seconds: 1));
-  socket.close();
+  socket.destroy();
 }

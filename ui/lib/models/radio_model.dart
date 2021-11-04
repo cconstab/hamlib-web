@@ -7,9 +7,16 @@ class HamRadio {
   String? vfobFrequency;
   String? vfobModulationMode;
   String? vfobOperatingMode;
+  String? vfoaFrequencyLast;
+  String? vfoaModulationModeLast;
+  String? vfoaOperatingModeLast;
+  String? vfobFrequencyLast;
+  String? vfobModulationModeLast;
+  String? vfobOperatingModeLast;
   String ipAddress;
   String portNumber;
   int errors;
+
 
   HamRadio(
       {required this.radioName,
@@ -20,6 +27,12 @@ class HamRadio {
       this.vfobFrequency = '0000000000',
       this.vfobModulationMode = '---',
       this.vfobOperatingMode = '---',
+      this.vfoaFrequencyLast = '0000000000',
+      this.vfoaModulationModeLast = '---',
+      this.vfoaOperatingModeLast = '---',
+      this.vfobFrequencyLast = '0000000000',
+      this.vfobModulationModeLast = '---',
+      this.vfobOperatingModeLast = '---',
       required this.ipAddress,
       required this.portNumber,
       this.errors = 0,
