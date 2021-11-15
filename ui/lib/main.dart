@@ -14,9 +14,10 @@ void main() {
   runApp(const MyApp());
 }
 
-
 Future<AtClientPreference> loadAtClientPreference() async {
   var dir = await path_provider.getApplicationSupportDirectory();
+  print(AtEnv.rootDomain);
+  print(AtEnv.appNamespace);
   return AtClientPreference()
         ..rootDomain = AtEnv.rootDomain
         ..namespace = AtEnv.appNamespace

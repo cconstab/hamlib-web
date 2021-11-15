@@ -35,7 +35,7 @@ packages:
       name: at_app_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0"
+    version: "2.0.0"
   at_backupkey_flutter:
     dependency: transitive
     description:
@@ -197,6 +197,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
+  dotenv:
+    dependency: transitive
+    description:
+      name: dotenv
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
   encrypt:
     dependency: transitive
     description:
@@ -244,13 +251,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_config:
-    dependency: transitive
-    description:
-      name: flutter_config
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   flutter_form_builder:
     dependency: "direct main"
     description:
